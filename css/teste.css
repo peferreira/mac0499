@@ -1,0 +1,64 @@
+﻿.logotipo {
+    background: blue;
+    position: relative;
+    height: 50px;
+    width: 500px;
+}
+
+.especial {
+    position: absolute;
+    top: 20px;
+    right: 50px;
+}
+
+
+.banner {
+     -webkit-border-radius: 10px 20px;
+}
+.topdireito{
+    position: absolute;
+    top: 50px;
+    right: 100px;
+   
+
+}
+
+.tccLI li{
+    padding-top: 5px;
+}
+
+.tccUL ul{
+    padding-top: 10px;
+}
+
+.tcch2 h2,h1{
+    position: relative;
+    
+    width: 600px;
+    
+}
+
+.menu-lateral {
+    position: absolute;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align:center;
+
+}
+
+.menu-lateral a{
+        
+        color: #333333;
+        text-decoration: none;
+}
+
+.menu-lateral li{
+    background-color: #ffdd50;
+    margin-bottom: 2px;
+    margin-right: 30px;
+    padding: 1px 3px;
+}
+
+.menu-lateral ul{
+    list-style-type:none
+}
