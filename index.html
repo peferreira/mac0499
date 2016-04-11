@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/teste.css" />
+
+    <title>MAC0499-2016</title>
+</head>
+<body>
+    <!-- Topo da pagina-->
+    <header class="tcch2 banner" style="width:600px; padding-left:200px; padding-top: 30px; text-align:justify">
+        <h1><strong>Trabalho de Conclusão de Curso - MAC0499 - 2016</strong></h1>
+
+    </header>
+    <!--Informações do aluno e da disciplina-->
+    <section id="infoAluno" style="position: relative; padding-top: 10px; left: 200px; text-align:justify">
+        <p style ="height: 1px;"><strong>Aluno:</strong> Pedro Ferreira Alexandre</p>
+        <p><strong>Professor Orientador:</strong> Paulo Miranda</p>
+
+
+    </section>
+
+    <!-- Barra lateral  -->
+    <section id="lateral" class="menu-lateral" style="width: 180px; position:absolute ; top:50px; font-size:12px; ">
+        <ul>
+            <li><a href="#objetivoPrincipal">Objetivo</a></li>
+            <li><a href="#cronograma">Cronograma<a></li>
+        </ul>
+    </section>
+
+
+
+
+    <!--Conteúdo-->
+    <section id="conteudo" style="text-align:justify;  padding-left:200px; padding-top:30px">
+        <h2 style="width:600px;">Comparando o desempenho da IFT sobre pixels e super pixels </h2>
+        <h4 style="padding-top:50px;"><strong>Contextualização:</strong></h4>
+        <p style="width:600px; padding-top:20px;">
+	  A técnica de super pixels consiste em encontrar pixels em uma imagem e classificá-los em regiões. As regiões tentam preservar características da imagem, como bordas e cores.
+Essa técnica pode diminuir a complexidade no processamento de imagensao reduzir significantemente o número
+de elementos da imagem.<br>
+A Image Foresting Transform(IFT) é um algoritmo para encontrar duas regiões distintas de uma imagem. Quando testado em imagens em formato de super pixels, a IFT obteve resultados relevantes.
+No entanto, no paper estudado, a IFT utiliza-se de uma técnica de geração de super pixels defasada.<br>
+O SLIC é um algoritmo de geração de super pixels considerado melhor que seus concorrentes.
+A proposta é verificar os resultados do SLIC como o gerador dos super pixels para a IFT.
+	</p>
+
+
+        <ul class="tccUL" style="width:600px; padding-top:50px; padding-left:20px ">
+            <li id="objetivoPrincipal"><strong>Objetivo principal:</strong></li>
+                <ul>
+                    <li>Comparar o desempenho do SLIC com o desempenho de outros geradores de super pixels, quando utilizados na IFT.</li>
+                    <li>Obter resultados da IFT utilizada sobre pixels e super pixels em algum banco de imagens, utilizando-se dos métodos para geração de sementes.</liclass>
+                    <li>Calcular a acurácia dos resultados obtidos baseando-se nos gabaritos das imagens.</li>
+                    <li>Verificar o desempenho da IFT, comparando os resultados obtidos entre a segmentação a nível de pixels e super pixels.</li>
+                    <li>Comparar os resultados obtidos pelos diferentes métodos para geração de super pixels utilizados.</li>
+                </ul>
+            <li id="cronograma"><strong>Cronograma:</strong></li>
+                <ul>
+                    <li>Estudo dos artigos publicados relacionados ao tema. <font color="red">(abril e maio)</font></li>
+                    <li>Implementação do IFT, utilizando o SLIC(e/ou IFT SLIC) para segmentar a imagem em super pixels. <font color="red">(junho e julho)</font></li>
+                    <li>Implementação dos seguintes métodos de geração de sementes,
+                        que serão utilizados para a comparação do desempenho da IFT sobre pixels e super pixels:
+                        <ul>
+                          <li>Implementação da geração de sementes através da erosão do gabarito da imagem.</li>
+                          <li>Implementação da geração de sementes através de um usuário robô.             </li>
+                        </ul>
+                        <font color="red">(julho e agosto)</font>.
+                    </li>
+                    <li>Aplicação dos algoritmos desenvolvidos nos bancos de imagem. <font color="red">(agosto) </font></li>
+                    <li>Avaliação dos resultados obtidos pelos métodos implementados. <font color="red">(agosto e setembro)</font></li>
+                    <li>Escrita da monografia. <font color="red">(agosto, setembro e outubro).</font></li>
+                </ul>
+
+        </ul>
+    </section>
+
+
+
+    <footer>
+
+    </footer>
+</body>
+</html>
