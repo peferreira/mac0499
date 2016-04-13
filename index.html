@@ -27,6 +27,9 @@
         <ul>
             <li><a href="#objetivoPrincipal">Objetivo</a></li>
             <li><a href="#cronograma">Cronograma<a></li>
+            <li><a href="#calendario">Calendario<a></li>
+            <li><a href="#referencias">Referências<a></li>
+
         </ul>
     </section>
 
@@ -35,16 +38,17 @@
 
     <!--Conteúdo-->
     <section id="conteudo" style="text-align:justify;  padding-left:200px; padding-top:30px">
-        <h2 style="width:600px;">Comparando o desempenho da IFT sobre pixels e super pixels </h2>
+        <h2 style="width:600px; text-align:left;">Segmentação de imagens pela Transformada Imagem-Floresta em grafos de superpixels </h2>
         <h4 style="padding-top:50px;"><strong>Contextualização:</strong></h4>
         <p style="width:600px; padding-top:20px;">
-	  A técnica de super pixels consiste em encontrar pixels em uma imagem e classificá-los em regiões. As regiões tentam preservar características da imagem, como bordas e cores.
-Essa técnica pode diminuir a complexidade no processamento de imagensao reduzir significantemente o número
-de elementos da imagem.<br>
-A Image Foresting Transform(IFT) é um algoritmo para encontrar duas regiões distintas de uma imagem. Quando testado em imagens em formato de super pixels, a IFT obteve resultados relevantes.
-No entanto, no paper estudado, a IFT utiliza-se de uma técnica de geração de super pixels defasada.<br>
-O SLIC é um algoritmo de geração de super pixels considerado melhor que seus concorrentes.
-A proposta é verificar os resultados do SLIC como o gerador dos super pixels para a IFT.
+          A técnica de superpixels consiste em agrupar pixels similares de uma imagem em regiões compactas e conexas. As regiões idealmente devem preservar as bordas de transição entre os diferentes objetos presentes na imagem <a href="#1">[1]</a>.  Essa técnica pode diminuir a complexidade de tarefas de visão computacional e processamento de imagens, pois no nível de superpixels temos um número de elementos da imagem significantemente menor, consequentemente elevando a eficiência.
+
+      A Transformada Imagem-Floresta (Image Foresting Transform - IFT)<a href="#2">[2]</a> é um algoritmo que calcula uma floresta de caminhos ótimos em um
+      grafo derivado da imagem. A segmentação interativa de objetos via IFT é obtida através da seleção de pixels sementes dentro e fora do objeto, sendo o objeto segmentado definido pela união das árvores enraizadas em suas sementes internas. No artigo <a href="#3">[3]</a> foi proposto o uso da IFT sobre um grafo de regiões (superpixels) obtido via algoritmo de watershed <a href="#4">[4]</a>. Segundo os autores, os resultados da segmentação via IFT no nível do grafo de regiões gerou melhores resultados quando comparado a IFT em um grafo no nível dos pixels.
+      No entanto, existem algoritmos mais adequados para a geração de superpixels que o uso das bacias do watershed, tais como o SLIC <a href="#1">[1]</a>.
+      Esse trabalho visa avaliar o impacto do uso de um grafo de regiões obtido pelo método SLIC na segmentação via IFT. Pretendemos também avaliar um novo método de geração de superpixels chamado IFT-SLIC <a href="#5">[5]</a>. Os experimentos serão conduzidos usando sementes obtidas automaticamente
+      de um gabarito de segmentação (ground truth), empregando usuários robôs <a href="#6">[6]</a> e também via técnica de erosão/dilatação gerando uma região de incerteza a ser segmentada entorno da borda.
+
 	</p>
 
 
@@ -57,6 +61,8 @@ A proposta é verificar os resultados do SLIC como o gerador dos super pixels pa
                     <li>Verificar o desempenho da IFT, comparando os resultados obtidos entre a segmentação a nível de pixels e super pixels.</li>
                     <li>Comparar os resultados obtidos pelos diferentes métodos para geração de super pixels utilizados.</li>
                 </ul>
+            <br>
+            <br>
             <li id="cronograma"><strong>Cronograma:</strong></li>
                 <ul>
                     <li>Estudo dos artigos publicados relacionados ao tema.</li>
@@ -77,7 +83,7 @@ A proposta é verificar os resultados do SLIC como o gerador dos super pixels pa
         </ul>
         <br>
         <br>
-        <table>
+        <table id="calendario">
           <tr>
             <td><strong>Atividades</strong></td>
             <td><strong>Abr</strong></td>
@@ -140,7 +146,7 @@ A proposta é verificar os resultados do SLIC como o gerador dos super pixels pa
               <td></td>
               <td></td>
               <td>X</td>
-              <td></td>
+              <td>X</td>
               <td></td>
               <td></td>
               <td></td>
@@ -152,7 +158,7 @@ A proposta é verificar os resultados do SLIC como o gerador dos super pixels pa
               <td></td>
               <td></td>
               <td>X</td>
-              <td></td>
+              <td>X</td>
               <td></td>
               <td></td>
           </tr>
@@ -165,18 +171,25 @@ A proposta é verificar os resultados do SLIC como o gerador dos super pixels pa
               <td>X</td>
               <td>X</td>
               <td>X</td>
-              <td> </td>
+              <td>X</td>
           </tr>
 
 
         </table>
     </section>
 
-    <br>
-    <br>
+
 
     <footer>
-
+      <section id="referencias" style="text-align:justify;  padding-left:200px; padding-top:120px">
+      <strong>Referências:</strong><br><br>
+      <a name="1" href="">[1]</a><br>
+      <a href="2">[2]</a><br>
+      <a href="3">[3]</a><br>
+      <a href="4">[4]</a><br>
+      <a href="5">[5]</a><br>
+      <a href="6">[6]</a><br>
+      </section>
     </footer>
 </body>
 </html>
