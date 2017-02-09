@@ -20,7 +20,6 @@ for (dirpath, dirnames, filenames) in walk(path):
                     arquivos[filename] = acuracias
 
 for nome, acuracias in arquivos.items():
-    print nome
     for raio, acuracia in acuracias.items():
         if raio not in mediaAcuracias:
             mediaAcuracias[raio] = {"acc":float(acuracia), "num":1}
@@ -30,4 +29,5 @@ for nome, acuracias in arquivos.items():
 
 for raio,obj in mediaAcuracias.items():
     acuraciaMedia = obj["acc"]/obj["num"]
-    print str(raio)+" ("+ str(obj['num'])+ "): "+ str(acuraciaMedia)
+    if raio < 50:
+        print str(raio)+" "+ str(acuraciaMedia)
