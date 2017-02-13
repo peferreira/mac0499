@@ -1,0 +1,171 @@
+%% ------------------------------------------------------------------------- %%
+\chapter{Conceitos e ferramentas}
+\label{cap:conceitos}
+
+\section{Algoritmos}
+Essa seção explicará em detalhes as ferramentas e alguns conceitos utilizados nesse trabalho. 
+\paragraph*{}
+Primeiramente será explicado o que é o SLIC e algumas diferenças para seus principais concorrentes. Logo em seguida descreveremos em mais detalhes o algoritmo da IFT, que é o algoritmo que será utilizado nos experimentos.
+\paragraph*{}
+Também será explicado o conceito de erosão de uma imagem e a geração de sementes para o algoritmo da IFT por erosão. Por fim, terá uma apresentação do Coeficiente de Dice, utilizado nesse trabalho para verificação da acurácia do método aplicado.
+
+
+
+\subsection{SLIC}
+\paragraph*{}
+O SLIC é um método para  geração superpixels baseado  em gradientes ascendentes. Algoritmos dessa classe utilizam-se de múltiplas iterações  para refinar um conjunto de pixels, até que um critério seja satisfeito, para a formação de um superpixel. 
+\paragraph*{}
+Esse algoritmo é mais rápido, utiliza menos memória, realiza ótima aderência com bordas e  fronteiras de objetos na imagem, e melhora a performance de algoritmos de segmentação. Simple linear iterative clustering é uma adaptação do k-means para a geração de superpixels, com duas importantes distinções:
+
+
+
+
+\begin{itemize}
+\item O número de cálculos de distância é drasticamente reduzido ao limitar o espaço de busca para uma região proporcional ao tamanho do superpixel. Isso faz com que a complexidade seja reduzida a linear no número de pixels N e independente do número de superpixels k. 
+
+\item Uma medida ponderada de distância que combina cor e proximidade espacial, promovendo controle sobre o tamanho e a compacidade dos superpixels.
+
+\end{itemize}
+
+\subsection{IFT}
+\paragraph*{}
+A transformada imagem-floresta (IFT - Image Foresting Transform) reduz problemas de processamento de imagem baseados em conexidade ao cálculo de uma floresta de caminhos ótimos no grafo derivado da imagem, seguido de um pós-processamento
+simples de atributos da floresta resultante.
+\paragraph*{}
+ O Algoritmo da IFT pode ser usado para separar objetos do fundo em uma imagem. Nesse caso a IFT realiza uma busca através dos elementos da imagem, a partir de sementes iniciais que podem ser de objeto ou de fundo, por vizinhos similares. No decorrer da busca, elementos são conquistados virando objeto ou fundo e formando o conjunto final, que se trata de uma imagem binária.
+
+
+\section{Geração de sementes para a IFT} 
+Nessa seção será discutido o uso de sementes na IFT, e a técnica de erosão de imagens para a geração dessas sementes. Para isso, será discutido o conceito de erosão de uma imagem, técnica utilizada nos experimentos da última seção para geração das sementes.
+
+\subsection{Erosão}
+\paragraph*{}
+A erosão (usualmente representada por $\ominus$) e a dilatação são consideradas as duas operações fundamentais do processamento morfológico de imagens, sendo assim, todas as outras operações são baseadas nelas. 
+\paragraph*{}
+Em morfologia binária, uma imagem é vista como um sub-conjunto de um espaço Euclideano $\mathbb{R}^{d}$ ou o conjunto de inteiros $\mathbb{Z}^{d}$, para alguma dimensão \emph{d}.
+\paragraph*{}
+A ideia básica em uma morfologia binária é examinar uma imagem utilizando um objeto simples com formato pré-definido, e decidir se esse objeto se enquadra nos objetos presentes na imagem. Esse objeto de examinação é chamado de elementro estrutural, e é uma imagem também.
+\paragraph*{}
+Seja \emph{E} um espaço Euclideano ou um gride de inteiros, e \emph{A} uma imagem binária em \emph{E}. 
+A \textbf{erosão} de uma imagem binária \emph{A} produzida pelo elemento estruturante \emph{B} é definida por:
+\paragraph*{}
+\begin{equation}
+A \ominus B =  \{ z \in E | B_z \subseteq A \}
+\end{equation}
+\paragraph*{}
+Onde $B_z$ é a translação de \emph{B} dada pelo vetor z, i.e., 
+\paragraph*{}
+\begin{equation}
+B_z = \{b+z | b \in B \}, \forall z \in E
+\end{equation}
+
+\newpage
+
+
+\textbf{Exemplo:}
+
+\paragraph*{}
+Dada a imagem binária  \emph{A} (\ref{fig:A}) a seguir e o elemento estruturante \emph{B} (\ref{fig:A})
+
+\paragraph*{}
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=7cm]{figuras/erosao1}
+\caption{\label{fig:A} A}
+\end{center}
+\end{figure}
+
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=3cm]{figuras/estruturante}
+\caption{\label{fig:B} B}
+\end{center}
+\end{figure}
+
+\pagebreak
+
+Aplicando-se o elemento estruturante \emph{B} em cada elemento da imagem \emph{A}, encontraremos elementos que não pertencem a $A \ominus B$, por exemplo o elemento centralizado no meio do elemento estruturante da
+imagem (\ref{fig:notFit})
+\paragraph*{}
+
+
+\begin{figure}[!h]
+
+\paragraph*{}
+
+\begin{center}
+\includegraphics[width=6cm]{figuras/erosao1-not-fit}
+\caption{\label{fig:notFit} }
+\end{center}
+\end{figure}
+
+
+
+E também podem existir elementos que pertencem a $A \ominus B$, por exemplo o elemento centralizado no meio do elemento estruturante, como mostrado na imagem (\ref{fig:fit}).
+\begin{figure}[!h]
+
+
+
+\begin{center}
+\includegraphics[width=6cm]{figuras/erosao1-fit}
+\caption{\label{fig:fit} }
+\end{center}
+\end{figure}
+
+
+
+O resultado da operação de erosão, $A \ominus B$, será dado pela imagem (\ref{fig:resultadoErosao}).
+
+\begin{figure}[!h]
+
+\begin{center}
+\includegraphics[width=6cm]{figuras/erosao2}
+\caption{\label{fig:resultadoErosao} }
+\end{center}
+\end{figure}
+
+\pagebreak
+
+
+\paragraph*{}
+
+
+\subsection{Geração de sementes por erosão}
+
+
+Para geração de semente utilizamos a erosão da imagem do gabarito que é uma imagem binária que separa o fundo do objeto.
+
+
+Aumentando o raio da erosão fizemos com que o gabarito se deforma-se gradualmente, até se tornar uma semente bem pouco significativa.
+Dessa forma usaremos as sementes criadas por erosão para alimentar a IFT.
+
+
+
+\section{Coeficiente de Dice}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+

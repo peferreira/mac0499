@@ -1,0 +1,78 @@
+%% ------------------------------------------------------------------------- %%
+\chapter{Conceitos e ferramentas}
+\label{cap:conceitos}
+
+\section{Algoritmos}
+
+\subsection{SLIC}
+3-Explicar o que é o SLIC 
+
+O SLIC é um método para  geração superpixels baseado  em gradientes ascendentes. Algoritmos dessa classe utilizam-se de múltiplas iterações  para refinar um conjunto de pixels, até que um critério seja satisfeito, para a formação de um superpixel. O SLIC é mais rápido, utiliza menos memória, realiza ótima aderência com bordas e  fronteiras de objetos na imagem, e melhora a performance de algoritmos de segmentação. Simple linear iterative clustering é uma adaptação do k-means para a geração de superpixels, com duas importantes distinções:
+O número de cálculos de distância é drasticamente reduzido ao limitar o espaço de busca para uma região proporcional ao tamanho do superpixel. Isso faz com que a complexidade seja reduzida a linear no número de pixels N e independente do número de superpixels k.
+Uma medida ponderada de distância que combina cor e proximidade espacial, promovendo controle sobre o tamanho e a compacidade dos superpixels.
+
+
+
+\subsection{IFT}
+
+A proposta deste trabalho é avaliar o desempenho em termos de acurácia para um algoritmo específico aplicado a uma imagem pré-processada e agrupada por regiões, superpixels, comparado com a aplicação do mesmo algoritmo na imagem a nível de pixels. 
+
+O algoritmo aplicado para a comparação dos resultados será a Transformada Imagem-Floresta (IFT - Image Foresting Transform). O Algoritmo da IFT será usado para separar objetos do fundo em uma imagem. Para aplicar a IFT sobre os superpixels é preciso realizar um pré-processamento da imagem para a criação dessa estrutura. Existem alguns métodos conhecidos para a criação dos superpixels como:
+
+No artigo **** foi realizado um trabalho semelhante, da aplicação da IFT sobre imagens em pixels e superpixels. Embora o método de segmentação em superpixels utilizado não seja considerado o mais atual os resultados foram satisfatórios.
+
+Neste trabalho vou verificar o comportamento do algoritmo da IFT ao utilizar o SLIC, um dos métodos mais atuais para a criação dos superpixels, e comparar os resultados ao desempenho da IFT a nível de pixels.
+
+
+/*imagem que contenha uma representacao das entidades e do que vai ser feito no trabalho*/
+\section{Erosão de uma imagem} http://www.inf.ufg.br/~fabrizzio/mestrado/pdi/aulas/aula9.pdf
+
+Erosão de uma imagem:
+
+Sendo A e B conjuntos de Z² (imagens binárias)
+A Erosão de de A por B é definida como:
+    A o B {x |(B)x  contido em  A}  
+O conjunto resultante da erosão de A por B é o conjunto de todos os pontos x tais que B, quando transladado por x, fique contido em A.
+
+
+/*imagens exemplo de erosão*/
+
+
+
+Geração de sementes por erosão:
+
+
+Para geração de semente utilizamos a erosão da imagem do gabarito, aumentando o raio da erosão fizemos com que o gabarito se deforma-se gradualmente, até se tornar uma semente bem pouco significativa.
+Dessa forma usaremos as sementes criadas por erosão para alimentar a IFT.
+
+\section{Coeficiente de Dice}
+
+\section{Geração de sementes para a IFT}
+\subsection{Erosão}
+\subsection{Usuário robô}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+Um exemplo de figura está na figura~\ref{fig:graph}.
+\begin{figure}[htb]
+\includegraphics[width=5cm]{figuras/graph}
+\caption{\label{fig:graph}Exemplo de uma figura.}
+\end{figure}
