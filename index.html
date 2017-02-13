@@ -46,7 +46,10 @@
         <h2 style="width:600px; text-align:left;">Segmentação de imagens pela Transformada Imagem-Floresta em grafos de superpixels </h2>
         <h4 style="padding-top:50px;"><strong>Contextualização:</strong></h4>
         <p style="width:600px; padding-top:20px;">
-          A técnica de superpixels consiste em agrupar pixels similares de uma imagem em regiões compactas e conexas. As regiões idealmente devem preservar as bordas de transição entre os diferentes objetos presentes na imagem <a href="#1">[1]</a>.  Essa técnica pode diminuir a complexidade de tarefas de visão computacional e processamento de imagens, pois no nível de superpixels temos um número de elementos da imagem significantemente menor, consequentemente elevando a eficiência.
+          A técnica de superpixels consiste em agrupar pixels similares de uma imagem em regiões compactas e conexas.
+          As regiões idealmente devem preservar as bordas de transição entre os diferentes objetos presentes na imagem <a href="#1">[1]</a>.
+          Essa técnica pode diminuir a complexidade de tarefas de visão computacional e processamento de imagens, pois no nível de superpixels
+          temos um número de elementos da imagem significantemente menor, consequentemente elevando a eficiência.
 
       A Transformada Imagem-Floresta (Image Foresting Transform - IFT)<a href="#2">[2]</a> é um algoritmo que calcula uma floresta de caminhos ótimos em um
       grafo derivado da imagem. A segmentação interativa de objetos via IFT é obtida através da seleção de pixels sementes dentro e fora do objeto, sendo o objeto segmentado definido pela união das árvores enraizadas em suas sementes internas. No artigo <a href="#3">[3]</a> foi proposto o uso da IFT sobre um grafo de regiões (superpixels) obtido via algoritmo de watershed <a href="#4">[4]</a>. Segundo os autores, os resultados da segmentação via IFT no nível do grafo de regiões gerou melhores resultados quando comparado a IFT em um grafo no nível dos pixels.
@@ -54,7 +57,7 @@
       Esse trabalho visa avaliar o impacto do uso de um grafo de regiões obtido pelo método SLIC na segmentação via IFT. Pretendemos também avaliar um novo método de geração de superpixels chamado IFT-SLIC <a href="#5">[5]</a>. Os experimentos serão conduzidos usando sementes obtidas automaticamente
       de um gabarito de segmentação (ground truth), empregando usuários robôs <a href="#6">[6]</a> e também via técnica de erosão/dilatação gerando uma região de incerteza a ser segmentada entorno da borda.
 
-	</p>
+	   </p>
 
 
         <ul class="tccUL" style="width:600px; padding-top:50px; padding-left:20px ">
