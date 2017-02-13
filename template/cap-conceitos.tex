@@ -13,7 +13,8 @@ Também será explicado o conceito de erosão de uma imagem e a geração de sementes
 
 \subsection{SLIC}
 \paragraph*{}
-O SLIC é um método para  geração superpixels baseado  em gradientes ascendentes. Algoritmos dessa classe utilizam-se de múltiplas iterações  para refinar um conjunto de pixels, até que um critério seja satisfeito, para a formação de um superpixel. 
+
+Simple linear iterative clustering \citet{slic:sp_slic} é um método para  geração superpixels baseado  em gradientes ascendentes. Algoritmos dessa classe utilizam-se de múltiplas iterações  para refinar um conjunto de pixels, até que um critério seja satisfeito, para a formação de um superpixel. 
 \paragraph*{}
 Esse algoritmo é mais rápido, utiliza menos memória, realiza ótima aderência com bordas e  fronteiras de objetos na imagem, e melhora a performance de algoritmos de segmentação. Simple linear iterative clustering é uma adaptação do k-means para a geração de superpixels, com duas importantes distinções:
 
@@ -29,8 +30,7 @@ Esse algoritmo é mais rápido, utiliza menos memória, realiza ótima aderência com
 
 \subsection{IFT}
 \paragraph*{}
-A transformada imagem-floresta (IFT - Image Foresting Transform) reduz problemas de processamento de imagem baseados em conexidade ao cálculo de uma floresta de caminhos ótimos no grafo derivado da imagem, seguido de um pós-processamento
-simples de atributos da floresta resultante.
+A Transformada Imagem-Floresta (IFT - Image Foresting Transform)  reduz problemas de processamento de imagem baseados em conexidade ao cálculo de uma floresta de caminhos ótimos no grafo derivado da imagem, seguido de um pós-processamento simples de atributos da floresta resultante, como visto em  \citet{ift:ift_teoria}.
 \paragraph*{}
  O Algoritmo da IFT pode ser usado para separar objetos do fundo em uma imagem. Nesse caso a IFT realiza uma busca através dos elementos da imagem, a partir de sementes iniciais que podem ser de objeto ou de fundo, por vizinhos similares. No decorrer da busca, elementos são conquistados virando objeto ou fundo e formando o conjunto final, que se trata de uma imagem binária.
 
@@ -132,22 +132,55 @@ O resultado da operação de erosão, $A \ominus B$, será dado pela imagem (\ref{fi
 \paragraph*{}
 
 
-\subsection{Geração de sementes por erosão}
+\subsection{Geração de sementes}
+
+\subsubsection{Sementes na IFT}
+
+O algoritmo da IFT é inicializado a partir de sementes do fundo e do objeto, a partir dessas sementes o algoritmo busca por segmentos da imagem que pertençam ao mesmo objeto que a semente especificada. Por exemplo, se a IFT receber uma semente de fundo em uma iteração, ela vai percorrer os arredores daquela semente se guiando através de pixels ou regiões semelhantes, para clássificá-las como regiões do fundo dessa imagem.
+\subsubsection{Sementes por erosão}
+
+Uma forma de gerar as sementes é através da erosão da imagem do gabarito, que é uma imagem binária que separa o fundo do objeto.
+Aplicando a erosão no gabarito com raios diferentes é possivel gerar uma variação de imagens para serem utilizadas como sementesda IFT. 
+Se for realizado um processo de erosão partindo do raio 0 até o raio máximo de erosão gera-se imagens 
+distorcidas, gradualmente, onde a imagem de raio zero pode ser considerada uma semente extremamente significativa, até se tornar uma semente bem pouco significativa quando o raio é máximo.
+
+Dada uma imagem, por exemplo
+
+\begin{figure}[!h]
+
+\begin{center}
+\includegraphics[width=6cm]{figuras/scissors}
+\caption{\label{fig:tesoura} scissors, base de dados pública do grabcut}
+\end{center}
+\end{figure}
+
+\pagebreak
+
+Se aplicarmos a erosão do gabarito, obtemos uma semente diferente para os diversos raios de erosão.
+Na imagem seguinte mostro uma imagem variando seu raio de erosão de 0 (imagem sem erosão) até 45.  
 
 
-Para geração de semente utilizamos a erosão da imagem do gabarito que é uma imagem binária que separa o fundo do objeto.
+\begin{figure}[!h]
 
-
-Aumentando o raio da erosão fizemos com que o gabarito se deforma-se gradualmente, até se tornar uma semente bem pouco significativa.
-Dessa forma usaremos as sementes criadas por erosão para alimentar a IFT.
+\begin{center}
+\includegraphics[width=8cm]{figuras/erosao_tesoura}
+\caption{\label{fig:erosaoTesoura} raio 0 até 45, de 5 em 5.}
+\end{center}
+\end{figure}
 
 
 
 \section{Coeficiente de Dice}
+Esse coeficiente também é conhecido por outros nomes, tais como: Indice de Sorensen ou Coeficiente de Sorensen-Dice. Essa medida é uma estatistica usada para comparar a semelhança entre duas amostras. Também é conhecido como F1 score.
+
+A aplicação da formula original era destinada para a verificação de presença ou ausência de uma informação específica.
+
+\paragraph*{}
 
 
-
-
+\[
+     CSD = \frac{2 | X \cap Y |}{|X|+|Y|}
+\]
 
 
 

@@ -59,12 +59,14 @@ Recentemente, superpixels tem atraído interesse por possibilitar rápida segmenta
 \paragraph*{}
 A proposta deste trabalho é avaliar o desempenho em termos de acurácia para um algoritmo específico aplicado a uma imagem pré-processada e agrupada por regiões, superpixels, comparado com a aplicação do mesmo algoritmo na imagem a nível de pixels. 
 \paragraph*{}
-O algoritmo aplicado para a comparação dos resultados será a Transformada Imagem-Floresta (IFT - Image Foresting Transform). O Algoritmo da IFT será usado para separar objetos do fundo em uma imagem. Para aplicar a IFT sobre os superpixels é preciso realizar um pré-processamento da imagem para a criação dessa estrutura. Existem alguns métodos conhecidos para a criação dos superpixels como:
+O algoritmo aplicado para a comparação dos resultados será a Transformada Imagem-Floresta (IFT - Image Foresting Transform) \citet{ift:ift_teoria}
+. O Algoritmo da IFT será usado para separar objetos do fundo em uma imagem. Para aplicar a IFT sobre os superpixels é preciso realizar um pré-processamento da imagem para a criação dessa estrutura. Existem alguns métodos conhecidos para a criação dos superpixels como:
 \paragraph*{}
 
-No artigo **** foi realizado um trabalho semelhante, da aplicação da IFT sobre imagens em pixels e superpixels. Embora o método de segmentação em superpixels utilizado não seja considerado o mais atual os resultados foram satisfatórios.
+No artigo \citet{falcao01:ift_sp} foi realizado um trabalho semelhante, da aplicação da IFT sobre imagens em pixels e superpixels. Embora o método de segmentação em superpixels utilizado não seja considerado o mais atual os resultados foram satisfatórios.
 \paragraph*{}
-Neste trabalho vou verificar o comportamento do algoritmo da IFT ao utilizar o SLIC, um dos métodos mais atuais para a criação dos superpixels, e comparar os resultados ao desempenho da IFT a nível de pixels.
+Neste trabalho vou verificar o comportamento do algoritmo da IFT ao utilizar o SLIC \citet{falcao01:ift_sp}
+, um dos métodos mais atuais para a criação dos superpixels, e comparar os resultados ao desempenho da IFT a nível de pixels.
 
 
 \section{Organização do trabalho}
@@ -73,25 +75,9 @@ Neste trabalho vou verificar o comportamento do algoritmo da IFT ao utilizar o S
 
 
 
-\begin{small}
-\begin{verbatim}
-Modos de citação:
-indesejável: [AF83] introduziu o algoritmo ótimo.
-indesejável: (Andrew e Foster, 1983) introduziram o algoritmo ótimo.
-certo : Andrew e Foster introduziram o algoritmo ótimo [AF83].
-certo : Andrew e Foster introduziram o algoritmo ótimo (Andrew e Foster, 1983).
-certo : Andrew e Foster (1983) introduziram o algoritmo ótimo.
-\end{verbatim}
-\end{small}
 
-Uma prática recomendável na escrita de textos é descrever as legendas das
-figuras e tabelas em forma auto-contida: as legendas devem ser razoavelmente
-completas, de modo que o leitor possa entender a figura sem ler o texto onde a
-figura ou tabela é citada.  
 
-Apresentar os resultados de forma simples, clara e completa é uma tarefa que
-requer inspiração. Nesse sentido, o livro de \citet{tufte01:visualDisplay},
-\emph{The Visual Display of Quantitative Information}, serve de ajuda na
-criação de figuras que permitam entender e interpretar dados/resultados de forma
-eficiente.
+
+
+
 
