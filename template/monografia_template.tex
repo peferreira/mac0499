@@ -120,8 +120,8 @@ framexrightmargin=10pt
     
 
     \vspace{3cm}
-    \textbf{\Large{Segmentação de imagens  \\
-    pela Transformada Imagem-Floresta \\em grafos de superpixels}}
+    \textbf{\Large{Segmentação de imagens 
+    pela \\ Transformada Imagem-Floresta \\em grafos de superpixels}}
     
        
     \vskip 5cm
@@ -181,24 +181,22 @@ framexrightmargin=10pt
 % Resumo
 \chapter*{Resumo}
 
-Elemento obrigatório, constituído de uma sequência de frases concisas e
-objetivas, em forma de texto.  Deve apresentar os objetivos, métodos empregados,
-resultados e conclusões.  O resumo deve ser redigido em parágrafo único, conter
-no máximo 500 palavras e ser seguido dos termos representativos do conteúdo do
-trabalho (palavras-chave).
-\\
 
-\noindent \textbf{Palavras-chave:} palavra-chave1, palavra-chave2, palavra-chave3.
+A técnica de superpixels consiste em agrupar pixels similares de uma imagem em regiões compactas e conexas. As regiões idealmente devem preservar as bordas de transição entre os diferentes objetos presentes na imagem . Essa técnica pode diminuir a complexidade de tarefas de visão computacional e processamento de imagens, pois no nível de superpixels temos um número de elementos da imagem significantemente menor, consequentemente elevando a eficiência. A Transformada Imagem-Floresta (Image Foresting Transform - IFT) \citet{ift:ift_teoria} é um algoritmo que calcula uma floresta de caminhos ótimos em um grafo derivado da imagem. A segmentação interativa de objetos via IFT é obtida através da seleção de pixels sementes dentro e fora do objeto, sendo o objeto segmentado definido pela união das árvores enraizadas em suas sementes internas. No artigo \citet{falcao01:ift_sp} foi proposto o uso da IFT sobre um grafo de regiões (superpixels) obtido via algoritmo de watershed. Segundo os autores, os resultados da segmentação via IFT no nível do grafo de regiões gerou melhores resultados quando comparado a IFT em um grafo no nível dos pixels. No entanto, existem algoritmos mais adequados para a geração de superpixels que o uso das bacias do watershed, tais como o SLIC \citet{slic:sp_slic} . Esse trabalho visa avaliar o impacto do uso de um grafo de regiões obtido pelo método SLIC na segmentação via IFT.  Os experimentos serão conduzidos usando sementes obtidas automaticamente de um gabarito de segmentação (ground truth), via técnica de erosão, gerando uma região de incerteza a ser segmentada entorno da borda.
+\\\\
+\noindent \textbf{Palavras-chave:} superpixels, processamento de imagens.
 
 % ---------------------------------------------------------------------------- %
 % Abstract
 \chapter*{Abstract}
 
-Elemento obrigatório, elaborado com as mesmas características do resumo em
-língua portuguesa.
-\\
 
-\noindent \textbf{Keywords:} keyword1, keyword2, keyword3.
+
+
+
+The superpixels technique is to group similar pixels of an image in compact and related regions. The regions should ideally preserve the transition edges between different objects in the image. This technique can reduce the complexity of tasks of computer vision and image processing, because superpixels have a significantly lower number of picture elements, thus increasing efficiency. The Transformed Image-Forest (Image foresting Transform - IFT) \citet{ift:ift_teoria} is an algorithm that calculates a forest of optimal paths in a graph derived from the image. Interactive segmentation via IFT object is achieved through the selection of seed pixels inside and outside the object, and the segmented object defined by the union of trees rooted in its internal seeds. Article \citet{falcao01:ift_sp}  has proposed the use of IFT regions on a graph (superpixels) obtained via watershed algorithm. According to the authors, the results of segmentation via IFT in regions graph level generated better results when compared to IFT in a graph at the level of pixels. However, there are more suitable algorithms for generating superpixels that the use of watershed basins, such as the SLIC \citet{slic:sp_slic}. This study aims to evaluate the impact of using a graph of regions obtained by SLIC method when segmented via IFT. The experiments will be conducted using seeds obtained automatically from a target template (ground truth), via erosion technique. generating an uncertainty region to be targeted around the edge.
+\\\\
+\noindent \textbf{Keywords:} superpixels, processamento de imagens.
 
 
 % ---------------------------------------------------------------------------- %
@@ -239,14 +237,13 @@ língua portuguesa.
 % cabeçalho para as páginas de todos os capítulos
 \fancyhead[RE,LO]{\thesection}
 
-\singlespacing              % espaçamento simples
-%\onehalfspacing            % espaçamento um e meio
+%\singlespacing              % espaçamento simples
+\onehalfspacing            % espaçamento um e meio
 
 
 \input cap-introducao        % associado ao arquivo: 'cap-introducao.tex'
 \input cap-conceitos  % associado ao arquivo: 'cap-conceitos.tex'
-%\input cap-trabalho-relacionado  % associado ao arquivo: 'cap-trabalho-relacionado.tex'
-\input cap-experimentos        % associado ao arquivo: 'cap-experimentos.tex'
+\input cap-exp        % associado ao arquivo: 'cap-exp.tex'
 \input cap-conclusoes        % associado ao arquivo: 'cap-conclusoes.tex'
 
 % cabeçalho para os apêndices

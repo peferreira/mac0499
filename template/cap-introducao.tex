@@ -6,7 +6,7 @@
 Quando trabalhamos com imagens nem sempre imaginamos quantos cálculos são necessários para realizar pequenas alterações. A maioria das fotos são compostas por mais de 1 milhão de pixels, e cada operação que envolva essa imagem, se não for devidamente otimizada, pode ter que ser repetida milhões de vezes.
 
 No entanto, uma imagem, geralmente, contêm diversas áreas redundantes, sendo assim os mesmos cálculos podem estar sendo feitos repetidamente, e portanto são desperdício de tempo e computação.
-
+\\
 \begin{figure}[htb]
 \begin{center}
 \includegraphics[width=7cm]{figuras/redundantes}
@@ -15,12 +15,11 @@ No entanto, uma imagem, geralmente, contêm diversas áreas redundantes, sendo ass
 \end{figure}
 
 \subsection{Agrupamento de pixels}
-\paragraph*{}
 Para tentar solucionar isso poderíamos dividir a imagem, agrupando os pixels em regiões, e então economizaríamos operações aplicadas a pixels que estivessem na mesma região.
 
 \subsubsection{Abordagem trivial}
-\paragraph*{}
 Uma forma simples de representar as regiões seria através de linhas paralelas às bordas da imagem, como a seguir:
+\\
 
 \begin{figure}[htb]
 \begin{center}
@@ -37,7 +36,7 @@ Pode-se notar com essa solução, que uma região específica pode conter um agrupam
 \paragraph*{}
 A técnica de superpixels consiste em agrupar pixels de uma imagem e classificá-los em regiões atomicamente  significantes, podendo substituir a estrutura rígida dos pixels,  sempre tentando preservar as características desta imagem, como bordas e cores. 
 \paragraph*{}
-Um superpixel é uma representação para uma região redundante da imagem. O uso dessa estrutura de pode reduzir consideravelmente a complexidade de processamentos subsequentes que envolvam a imagem. A estrutura de super pixels se tornou parte importante de muitos algoritmos de computação visual, tais como: segmentação, estimativa de modelo corporal, e reconhecimento de objetos.
+Um superpixel é uma representação para uma região redundante da imagem. O uso dessa estrutura pode reduzir consideravelmente a complexidade de processamentos subsequentes que envolvam a imagem. A estrutura de super pixels se tornou parte importante de muitos algoritmos de computação visual, tais como: segmentação, estimativa de modelo corporal, e reconhecimento de objetos.
 
 
 \begin{figure}[htb]

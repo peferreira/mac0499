@@ -27,7 +27,7 @@ Esse algoritmo é mais rápido, utiliza menos memória, realiza ótima aderência com
 \item Uma medida ponderada de distância que combina cor e proximidade espacial, promovendo controle sobre o tamanho e a compacidade dos superpixels.
 
 \end{itemize}
-
+\pagebreak
 \subsection{IFT}
 \paragraph*{}
 A Transformada Imagem-Floresta (IFT - Image Foresting Transform)  reduz problemas de processamento de imagem baseados em conexidade ao cálculo de uma floresta de caminhos ótimos no grafo derivado da imagem, seguido de um pós-processamento simples de atributos da floresta resultante, como visto em  \citet{ift:ift_teoria}.
@@ -136,16 +136,16 @@ O resultado da operação de erosão, $A \ominus B$, será dado pela imagem (\ref{fi
 
 \subsubsection{Sementes na IFT}
 
-O algoritmo da IFT é inicializado a partir de sementes do fundo e do objeto, a partir dessas sementes o algoritmo busca por segmentos da imagem que pertençam ao mesmo objeto que a semente especificada. Por exemplo, se a IFT receber uma semente de fundo em uma iteração, ela vai percorrer os arredores daquela semente se guiando através de pixels ou regiões semelhantes, para clássificá-las como regiões do fundo dessa imagem.
+O algoritmo da IFT é inicializado a partir de sementes do fundo e do objeto, através dessas sementes o algoritmo busca por regiões da imagem que pertençam ao mesmo objeto que a semente especificada. Por exemplo, se a IFT receber uma semente de fundo em uma iteração, ela vai percorrer os arredores daquela semente se guiando através de regiões semelhantes para clássificá-las como também sendo regiões pertencentes ao fundo da imagem.
 \subsubsection{Sementes por erosão}
 
-Uma forma de gerar as sementes é através da erosão da imagem do gabarito, que é uma imagem binária que separa o fundo do objeto.
-Aplicando a erosão no gabarito com raios diferentes é possivel gerar uma variação de imagens para serem utilizadas como sementesda IFT. 
-Se for realizado um processo de erosão partindo do raio 0 até o raio máximo de erosão gera-se imagens 
-distorcidas, gradualmente, onde a imagem de raio zero pode ser considerada uma semente extremamente significativa, até se tornar uma semente bem pouco significativa quando o raio é máximo.
-
+Uma forma de gerar as sementes é através da erosão da imagem do gabarito (imagem binária que separa o fundo do objeto).
+Aplicando a erosão no gabarito de uma imagem e utilizando raios diferentes para o elemento estruturante gera-se um conjunto de  imagens para serem utilizadas como sementes da IFT. 
+Se for realizado um processo de erosão partindo do raio \emph{0} até o raio máximo de erosão serão geradas imagens 
+distorcidas, gradualmente, sendo a imagem de raio zero uma semente extremamente significativa(gabarito sem erosão), até se tornar uma semente bem pouco significativa quando o raio é máximo.
+\\\\
 Dada uma imagem, por exemplo
-
+\\
 \begin{figure}[!h]
 
 \begin{center}
@@ -156,8 +156,8 @@ Dada uma imagem, por exemplo
 
 \pagebreak
 
-Se aplicarmos a erosão do gabarito, obtemos uma semente diferente para os diversos raios de erosão.
-Na imagem seguinte mostro uma imagem variando seu raio de erosão de 0 (imagem sem erosão) até 45.  
+Se for aplicada a erosão no respectivo gabarito, será obtida uma semente diferente para os diversos raios de erosão.
+Na imagem seguinte será apresentada uma imagem variando seu raio de erosão de 0 (imagem sem erosão) até 45.  
 
 
 \begin{figure}[!h]
