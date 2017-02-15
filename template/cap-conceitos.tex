@@ -14,9 +14,9 @@ Também será explicado o conceito de erosão de uma imagem e a geração de sementes
 \subsection{SLIC}
 \paragraph*{}
 
-Simple linear iterative clustering \citet{slic:sp_slic} é um método para  geração superpixels baseado  em gradientes ascendentes. Algoritmos dessa classe utilizam-se de múltiplas iterações  para refinar um conjunto de pixels, até que um critério seja satisfeito, para a formação de um superpixel. 
+Simple linear iterative clustering \citet{slic:sp_slic} é um método para  geração de superpixels baseado  em gradientes ascendentes. Algoritmos dessa classe utilizam-se de múltiplas iterações  para refinar um conjunto de pixels, até que um critério seja satisfeito, para a formação de um superpixel. 
 \paragraph*{}
-Esse algoritmo é mais rápido, utiliza menos memória, realiza ótima aderência com bordas e  fronteiras de objetos na imagem, e melhora a performance de algoritmos de segmentação. Simple linear iterative clustering é uma adaptação do k-means para a geração de superpixels, com duas importantes distinções:
+Esse algoritmo é mais rápido, utiliza menos memória, realiza ótima aderência com bordas e  fronteiras de objetos na imagem e melhora a performance de algoritmos de segmentação. Simple linear iterative clustering é uma adaptação do k-means para a geração de superpixels, com duas importantes distinções:
 
 
 
@@ -136,7 +136,7 @@ O resultado da operação de erosão, $A \ominus B$, será dado pela imagem (\ref{fi
 
 \subsubsection{Sementes na IFT}
 
-O algoritmo da IFT é inicializado a partir de sementes do fundo e do objeto, através dessas sementes o algoritmo busca por regiões da imagem que pertençam ao mesmo objeto que a semente especificada. Por exemplo, se a IFT receber uma semente de fundo em uma iteração, ela vai percorrer os arredores daquela semente se guiando através de regiões semelhantes para clássificá-las como também sendo regiões pertencentes ao fundo da imagem.
+O algoritmo da IFT é inicializado a partir de sementes do fundo e do objeto. Através dessas sementes o algoritmo busca por regiões da imagem que pertençam ao mesmo objeto que a semente especificada. Por exemplo, se a IFT receber uma semente de fundo em uma iteração, ela vai percorrer os arredores daquela semente se guiando através de regiões semelhantes para clássificá-las como também sendo regiões pertencentes ao fundo da imagem.
 \subsubsection{Sementes por erosão}
 
 Uma forma de gerar as sementes é através da erosão da imagem do gabarito (imagem binária que separa o fundo do objeto).
