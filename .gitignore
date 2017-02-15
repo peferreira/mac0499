@@ -7,4 +7,9 @@
 *.out
 *.toc
 *.fmt
-
+*.bbl
+*.blg
+*.brf
+*.idx
+*.ilg
+*.ind
