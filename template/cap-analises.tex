@@ -30,10 +30,10 @@ a produção de sementes com erosão. As bibliotecas utilizadas foram escritas em C
 Foi criado uma rotina para rodar o executável do eroeval para todas as imagens do grabcut, inicialmente passando como parâmetro a opção da ift a nível de pixels. 
 Representado na imagem dos resultados pela curva roxa traçejada, a IFT a nível de pixels obteve bons resultados quando as sementes eram mais significativas, raios menores do que 10 pixels, sendo a primeira colocada entre as curvas geradas no intervalo de raio 0 a 5 pixels. No entanto, ela piora sua acurácia ao longo da diminuição do raio da erosão.
 
-\subsection{IFT superpixels por imagem }
+\subsection{IFT sobre superpixels }
 
 E em seguida, também executada a mesma rotina, mas trabalhando com a IFT a nível de superpixels, recebendo o número de superpixels a serem gerados pelo SLIC como parâmetro.
-\subsubsection{100 superpixels} A curva obteve um dos melhores comportamentos, e no início, quando todas as outras curvas de super pixels ficaram mais afastadas da curva da IFT sobre pixels, a curva verde se manteve bem próxima a curva da IFT sobre pixels. No final, assim como todas as curvas de super pixels, se manteve estavel e bem melhor do que a curva tradicional, sobre pixels.
+\subsubsection{100 superpixels} A curva obteve um dos melhores comportamentos, e no início, quando todas as outras curvas de superpixels ficaram mais afastadas da curva da IFT sobre pixels, a curva verde se manteve bem próxima a curva da IFT sobre pixels. No final, assim como todas as curvas de superpixels, se manteve estavel e bem melhor do que a curva tradicional, sobre pixels.
 \subsubsection{400 superpixels} Um pouco pior no início, quando comparado a IFT sobre a imagem com 100 superpixels, no entanto, logo se mantém junto as outras.
 \subsubsection{900 e 1600 superixels} Ambas obtiveram desempenho bem simular, e mostram que quanto maior o número de superpixels, de acordo com esse experimento, pior foi a acurácia para raios pequenos de erosão, onde as sementes fornecem muita informação do objeto e fundo.
 
