@@ -1,15 +1,16 @@
 \chapter{Conclusões}
-\label{cap:conclusoes}
-
+\label{cap:final}
 Neste trabalho foi apresentado um problema computacional relacionado a imagens e uma análise da aplicação de uma solução existente para a segmentação de imagens, o SLIC, ao algoritmo da IFT. 
-\paragraph*{} No \textbf{Capítulo 2} foi apresentada uma noção mais detalhada do SLIC e da IFT. Logo em seguida, no \textbf{Capítulo 3} foram introduzidos alguns conceitos que para facilitar o entendimento da geração de sementes por erosão. Por fim também foi apresentado, brevemente, o Coeficiente de Dice.
+\paragraph*{} No \textbf{Capítulo 2} foi apresentada uma noção mais detalhada do SLIC e da IFT. Logo em seguida, no \textbf{Capítulo 3} foram introduzidos alguns conceitos para facilitar o entendimento da geração de sementes por erosão. Por fim também foi apresentado, brevemente, o Coeficiente de Dice.
 \paragraph*{}
-Então, no \textbf{Capítulo 4}, foram realizados experimentos que visavam comparar o desempenho das execuções da IFT, sobre pixels e superpixels. A segmentação em superpixels utilizada no experimento reduziu bastante o número de elementos a serem computados pela IFT, pois cada imagem foi segmentada em 100 a 1600 regiões, dependendo do experimento. Fazendo com o número de regiões examinadas na IFT fosse consideravelmente menor.
+Então, no \textbf{Capítulo 4}, foram realizados experimentos que visavam comparar o desempenho das execuções da IFT, sobre pixels e superpixels. A segmentação em superpixels utilizada no experimento reduziu bastante o número de elementos a serem computados pela IFT, pois cada imagem foi segmentada em 100 a 1600 regiões, dependendo do experimento. Fazendo com que o número de regiões examinadas na IFT\_sp fosse consideravelmente menor. 
 \paragraph*{}
-A idéia de realizar um pré-processamento da imagém parece bem interessante, pois por mais que esse pré-processamento custe tempo e computação, uma vez feito, essa imagem segmentada pode ser guardada e utilizada posteriormente por outros algoritmos que possam se aproveitar dessa estrutura de superpixels.
+A idéia de realizar um pré-processamento da imagém parece bem interessante, pois por mais que esse pré-processamento custe tempo e computação, uma vez feito, essa imagem segmentada pode ser guardada e utilizada posteriormente por outros algoritmos que possam se aproveitar dessa estrutura de superpixels. No entanto, ao diminuir o número de pixels perdemos a informação individual de cada pixel.
 \paragraph*{}
-Embora a segmentação em superpixels faça com que a imagem perca a informação individual de cada pixel, os resultados mostram que a informação extraída da região que pré-computada pelo algoritmo do SLIC pode ser mais valiosa conforme a semente fornecida para separação do objeto é menos significante.
+Embora a segmentação em superpixels faça com que a imagem perca informação, os resultados mostram que a informação extraída da região quando é pré-computada pelo algoritmo do SLIC é valiosa, gerando resultados melhores do que a IFT sobre pixels quando a semente fornecida para separação do objeto é menos significativa.
 \paragraph*{}
-Uma vez que o SLIC já era considerado uma ténica mais atual, esperava-se que ele obtivesse um resultado satisfatório como gerador de superpixels para a IFT, uma vez que os superpixels gerados por watershed já mostravam resultados positivos na análise feita em \citet{falcao01:ift_sp}.
+Como o SLIC é considerado uma das ténicas mais atuais e os experimentos feitos em  \citet{falcao01:ift_sp} para IFT-watershed já mostravam resultados positivos para superpixels, era esperado que os resultados encontrados para IFT-slic nesse trabalho fossem satisfatórios. Por isso os resultados obtidos estão dentro das expectativas imaginadas.
 \paragraph*{}
-A princípio esse trabalho tinha a propostá de utilizar, adicionalmente a técnica de erosão para a criação de sementes, a geração de sementes através de um usuário robô, assim como no artigo citado acima, gerando mais um resultado para verificação. No entanto, algumas dificuldades na implementação fizeram com que somente a geração de sementes por erosão fosse implementada neste momento.  
+A princípio esse trabalho tinha a proposta de utilizar, adicionalmente à técnica de erosão para criação de sementes da IFT, a geração de sementes através de um usuário robô, assim como feito em  \citet{falcao01:ift_sp} , para os experimentos. No entanto, algumas dificuldades na implementação fizeram com que somente a geração de sementes por erosão fosse implementada neste momento.  
+
+
