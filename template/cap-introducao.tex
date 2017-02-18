@@ -9,21 +9,22 @@ No entanto, uma imagem, geralmente, contêm diversas áreas redundantes, sendo ass
 \\
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=7cm]{figuras/redundantes}
+\includegraphics[width=6cm]{figuras/redundantes}
 \caption{\label{fig:graph} Imagem com áreas redundantes.}
 \end{center}
 \end{figure}
 
-\subsection{Agrupamento de pixels}
+\pagebreak
+\section{Agrupamento de pixels}
 Para tentar solucionar isso poderíamos dividir a imagem, agrupando os pixels em regiões, e então economizaríamos operações aplicadas a pixels que estivessem na mesma região.
 
-\subsubsection{Abordagem trivial}
+\subsection{Abordagem trivial}
 Uma forma simples de representar as regiões seria através de linhas paralelas às bordas da imagem, como a seguir:
-\\
+
 
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=7cm]{figuras/gride}
+\includegraphics[width=8cm]{figuras/gride}
 \caption{\label{fig:graph} Imagem superpixels em gride.}
 \end{center}
 \end{figure}
@@ -31,8 +32,9 @@ Uma forma simples de representar as regiões seria através de linhas paralelas às
 
 \paragraph*{}
 Pode-se notar com essa solução, que uma região específica pode conter um agrupamento de pixels que contenha dois pixels $P_1$ e $P_2$ tais que  as características destes são muito distintas entre si, e portanto não seria correto tratá-los da mesma forma.
+\pagebreak
 
-\subsubsection{Abordagem elaborada}
+\subsection{Abordagem elaborada}
 \paragraph*{}
 A técnica de superpixels consiste em agrupar pixels de uma imagem e classificá-los em regiões atomicamente  significantes, podendo substituir a estrutura rígida dos pixels,  sempre tentando preservar as características desta imagem, como bordas e cores. 
 \paragraph*{}
@@ -41,7 +43,7 @@ Um superpixel é uma representação para uma região redundante da imagem. O uso de
 
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=7cm]{figuras/vaso_slic}
+\includegraphics[width=8cm]{figuras/vaso_slic}
 \caption{\label{fig:graph} Imagem superpixels SLIC.}
 \end{center}
 \end{figure}
@@ -49,12 +51,15 @@ Um superpixel é uma representação para uma região redundante da imagem. O uso de
 
 \paragraph*{}
 Pode-se notar a partir da imagem criada pelo SLIC que os contornos da imagem são preservados na maioria dos casos, e os pixels contidos em um superpixel podem receber o mesmo tratamento sem muita perda de informação.
-\paragraph*{}
-Recentemente, superpixels tem atraído interesse por possibilitar rápida segmentação e uma descrição de características melhor do que janelas de tamanho fixo envolvendo os pixels. 
+\pagebreak
+
 
 
 
 \section{Objetivos}
+\paragraph*{}
+Recentemente, superpixels tem atraído interesse por possibilitar rápida segmentação e uma descrição de características melhor do que janelas de tamanho fixo envolvendo os pixels. 
+
 \paragraph*{}
 A proposta deste trabalho é avaliar o desempenho em termos de acurácia para um algoritmo específico aplicado a uma imagem pré-processada e agrupada por regiões, superpixels, comparado com a aplicação do mesmo algoritmo na imagem a nível de pixels. 
 \paragraph*{}
@@ -68,7 +73,6 @@ Neste trabalho vou verificar o comportamento do algoritmo da IFT ao utilizar o S
 , um dos métodos mais atuais para a criação dos superpixels, e comparar os resultados ao desempenho da IFT a nível de pixels.
 
 
-\section{Organização do trabalho}
 
 
 
