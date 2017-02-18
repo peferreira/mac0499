@@ -3,9 +3,9 @@
 \label{cap:introducao}
 \section{Descrição do problema}
 \paragraph*{}
-Quando trabalhamos com imagens nem sempre imaginamos quantos cálculos são necessários para realizar pequenas alterações. A maioria das fotos são compostas por mais de 1 milhão de pixels, e cada operação que envolva essa imagem, se não for devidamente otimizada, pode ter que ser repetida milhões de vezes.
+Quando trabalhamos com imagens nem sempre imaginamos quantos cálculos são necessários para realizar pequenas operações sobre elas. A maioria das fotos são compostas por mais de 1 milhão de pixels, e cada operação que envolva essa imagem, se não for devidamente otimizada, pode ter que ser repetida milhões de vezes.
 
-No entanto, uma imagem, geralmente, contêm diversas áreas redundantes, sendo assim os mesmos cálculos podem estar sendo feitos repetidamente, e portanto são desperdício de tempo e computação.
+No entanto, uma imagem, geralmente, contém diversas áreas redundantes, fazendo com que os mesmos cálculos sejam feitos repetidamente, causando o desperdício de tempo e computação.
 \\
 \begin{figure}[htb]
 \begin{center}
@@ -16,10 +16,10 @@ No entanto, uma imagem, geralmente, contêm diversas áreas redundantes, sendo ass
 
 \pagebreak
 \section{Agrupamento de pixels}
-Para tentar solucionar isso poderíamos dividir a imagem, agrupando os pixels em regiões, e então economizaríamos operações aplicadas a pixels que estivessem na mesma região.
+Para tentar solucionar isso é possível que a imagem seja dividida, agrupando os pixels em regiões, e então serão economizadas operações que fossem ser aplicadas a pixels que estivessem na mesma região.
 
 \subsection{Abordagem trivial}
-Uma forma simples de representar as regiões seria através de linhas paralelas às bordas da imagem, como a seguir:
+Uma forma simples de representar as regiões é através de linhas paralelas às bordas da imagem, como a seguir:
 
 
 \begin{figure}[htb]
@@ -31,7 +31,7 @@ Uma forma simples de representar as regiões seria através de linhas paralelas às
 
 
 \paragraph*{}
-Pode-se notar com essa solução, que uma região específica pode conter um agrupamento de pixels que contenha dois pixels $P_1$ e $P_2$ tais que  as características destes são muito distintas entre si, e portanto não seria correto tratá-los da mesma forma.
+Pode-se notar com essa solução, que uma região específica pode envolver um conjunto de pixels que contenha dois elementos $P_1$ e $P_2$ tais que  as características destes são muito distintas entre si, e portanto não seria correto assumir que ambos possuem características iguais.
 \pagebreak
 
 \subsection{Abordagem elaborada}
@@ -50,7 +50,7 @@ Um superpixel é uma representação para uma região redundante da imagem. O uso de
 
 
 \paragraph*{}
-Pode-se notar a partir da imagem criada pelo SLIC que os contornos da imagem são preservados na maioria dos casos, e os pixels contidos em um superpixel podem receber o mesmo tratamento sem muita perda de informação.
+Pode-se notar a partir da imagem criada pelo SLIC que os contornos da imagem são preservados na maioria dos casos, e os pixels contidos em um superpixel podem ser considerados elementos com características iguais sem muita perda de informação.
 \pagebreak
 
 
@@ -64,12 +64,12 @@ Recentemente, superpixels tem atraído interesse por possibilitar rápida segmenta
 A proposta deste trabalho é avaliar o desempenho em termos de acurácia para um algoritmo específico aplicado a uma imagem pré-processada e agrupada por regiões, superpixels, comparado com a aplicação do mesmo algoritmo na imagem a nível de pixels. 
 \paragraph*{}
 O algoritmo aplicado para a comparação dos resultados será a Transformada Imagem-Floresta (IFT - Image Foresting Transform) \citet{ift:ift_teoria}
-. O Algoritmo da IFT será usado para separar objetos do fundo em uma imagem. Para aplicar a IFT sobre os superpixels é preciso realizar um pré-processamento da imagem para a criação dessa estrutura. Existem alguns métodos conhecidos para a criação dos superpixels como:
+. O Algoritmo da IFT será usado para separar objetos do fundo em uma imagem. Para aplicar a IFT sobre os superpixels é preciso realizar um pré-processamento da imagem para a criação dessa estrutura. 
 \paragraph*{}
 
 No artigo \citet{falcao01:ift_sp} foi realizado um trabalho semelhante, da aplicação da IFT sobre imagens em pixels e superpixels. O estudo realizado por \emph{Rauber} apresenta resultados satisfatórios embora o método de segmentação em superpixels utilizado não seja o mais atual.
 \paragraph*{}
-Neste trabalho vou verificar o comportamento do algoritmo da IFT ao utilizar o SLIC \citet{slic:sp_slic}
+Neste trabalho será verificado o comportamento do algoritmo da IFT ao utilizar o SLIC \citet{slic:sp_slic}
 , um dos métodos mais atuais para a criação dos superpixels, e comparar os resultados ao desempenho da IFT a nível de pixels.
 
 
