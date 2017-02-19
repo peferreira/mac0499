@@ -3,7 +3,7 @@
 \label{cap:introducao}
 \section{Descrição do problema}
 \paragraph*{}
-Quando trabalhamos com imagens nem sempre imaginamos quantos cálculos são necessários para realizar pequenas operações sobre elas. A maioria das fotos são compostas por mais de 1 milhão de pixels, e cada operação que envolva essa imagem, se não for devidamente otimizada, pode ter que ser repetida milhões de vezes.
+Quando trabalha-se com imagens nem sempre é possível imaginar quantos cálculos são necessários para realizar pequenas operações sobre elas. A maioria das fotos são compostas por mais de 1 milhão de pixels, e cada operação que envolva essa imagem, se não for devidamente otimizada, pode ter que ser repetida milhões de vezes.
 
 No entanto, uma imagem, geralmente, contém diversas áreas redundantes, fazendo com que os mesmos cálculos sejam feitos repetidamente, causando o desperdício de tempo e computação.
 \\
@@ -64,7 +64,7 @@ Recentemente, superpixels tem atraído interesse por possibilitar rápida segmenta
 A proposta deste trabalho é avaliar o desempenho em termos de acurácia para um algoritmo específico aplicado a uma imagem pré-processada e agrupada por regiões, superpixels, comparado com a aplicação do mesmo algoritmo na imagem a nível de pixels. 
 \paragraph*{}
 O algoritmo aplicado para a comparação dos resultados será a Transformada Imagem-Floresta (IFT - Image Foresting Transform) \citet{ift:ift_teoria}
-. O Algoritmo da IFT será usado para separar objetos do fundo em uma imagem. Para aplicar a IFT sobre os superpixels é preciso realizar um pré-processamento da imagem para a criação dessa estrutura. 
+. O Algoritmo da IFT será usado para separar objeto e fundo em uma imagem. Para aplicar a IFT sobre os superpixels é preciso realizar um pré-processamento da imagem. 
 \paragraph*{}
 
 No artigo \citet{falcao01:ift_sp} foi realizado um trabalho semelhante, da aplicação da IFT sobre imagens em pixels e superpixels. O estudo realizado por \emph{Rauber} apresenta resultados satisfatórios embora o método de segmentação em superpixels utilizado não seja o mais atual.
