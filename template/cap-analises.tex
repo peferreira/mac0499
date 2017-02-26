@@ -4,14 +4,16 @@
 \section{Resumo dos experimentos}
 
 
-Os experimentos consistiram em medir a acurácia da IFT ao separar objeto e fundo de uma imagem e foram rodados para o banco de imagens públicas do grabcut que contém 50 imagens. 
+Os experimentos consistiram em medir a acurácia da IFT ao separar objeto e fundo de uma imagem e foram rodados para o banco de imagens públicas do grabcut que contém 50 imagens.
 Foram feitas duas classes de rotinas principais:
 
 
 \begin{itemize}
 \item IFT sobre uma imagem bruta, sem pré-processamento em regioes (nível de pixels).
-\item IFT sobre regioes geradas pelo método SLIC, com 100, 400, 900 e 1600 superpixels.
+\item IFT sobre regioes geradas pelo método SLIC, com  superpixels com aproximadamente 100, 400, 900 e 1600 pixels.
 \end{itemize}
+
+
 
 \section{Programas utilizados}
 Para rodar os experimentos foram utilizadas implementações do SLIC, da IFT e um programa para
@@ -28,6 +30,8 @@ a produção de sementes com erosão. As bibliotecas externas utilizadas foram escr
 
 \section{Resultados obtidos}
 
+Sobre o processo de geração de sementes via erosão,  o raio de erosão é maior para a parte do fundo (dobro do valor usado do raio interno), a fim de evitar a geração de sementes de objeto e fundo equidistantes da borda ideal do gabarito. Nos gráficos o eixo x mostra o valor da erosão do objeto, e a erosão do fundo é sempre o dobro desse valor.
+
 \begin{figure}[!htb]
 \begin{center}
 \includegraphics[width=12cm]{figuras/resultados.png}
@@ -43,10 +47,10 @@ Representado na imagem dos resultados pela curva roxa traçejada, a IFT a nível d
 
 \subsection{IFT sobre superpixels }
 
-E em seguida foi executada a mesma rotina, mas passando a opção da IFT sobre superpixels e o número de superpixels a serem gerados pelo SLIC como parâmetros.
-\subsubsection{100 superpixels} A curva obteve um dos melhores comportamentos, e no início, quando todas as outras curvas de superpixels ficaram mais afastadas da curva da IFT sobre pixels, a curva verde se manteve bem próxima a curva da IFT sobre pixels. No final, assim como todas as curvas de superpixels, esta se manteve estável e bem melhor do que a curva tradicional, sobre pixels.
-\subsubsection{400 superpixels} Um pouco pior no início, quando comparado a IFT sobre a imagem com 100 superpixels, no entanto, logo o comportamento da curva se mantém bem parecido com a curva gerada pela IFT sobre 100 superpixels.
-\subsubsection{900 e 1600 superpixels} Ambas obtiveram desempenho similar, e mostram que quanto maior o número de superpixels, de acordo com esse experimento, pior foi a acurácia para raios pequenos de erosão ( caso onde as sementes fornecem muita informação do objeto e do fundo).
+E em seguida foi executada a mesma rotina, mas passando a opção da IFT sobre superpixels, e a área aproximada dos superpixels a serem gerados pelo SLIC como parâmetros. Um superpixel de área 100, por exemplo, indica que cada superpixel será composto por uma região de aproximadamente 10x10 pixels.
+\subsubsection{superpixels 10x10} A curva obteve um dos melhores comportamentos, e no início, quando todas as outras curvas de superpixels ficaram mais afastadas da curva da IFT sobre pixels, a curva verde se manteve bem próxima a curva da IFT sobre pixels. No final, assim como todas as curvas de superpixels, esta se manteve estável e bem melhor do que a curva tradicional, sobre pixels.
+\subsubsection{superpixels 20x20} Um pouco pior no início, quando comparado a IFT sobre a imagem de superpixels 10x10, no entanto, logo o comportamento da curva se mantém bem parecido com a curva anterior.
+\subsubsection{superpixels 30x30 e 40x40} Ambas obtiveram desempenho similar, e mostram que quanto maior o tamanho de um superpixel, de acordo com esse experimento, pior foi a acurácia para raios pequenos de erosão ( caso onde as sementes fornecem muita informação do objeto e do fundo).
 
 
 
