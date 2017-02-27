@@ -19,14 +19,55 @@ Esse algoritmo é mais rápido, utiliza menos memória, realiza ótima aderência com
 \item O número de cálculos de distância é drasticamente reduzido ao limitar o espaço de busca para uma região proporcional ao tamanho do superpixel. Isso faz com que a complexidade seja reduzida a linear no número de pixels N e independente do número de superpixels k. 
 
 \item Uma medida ponderada de distância que combina cor e proximidade espacial, promovendo controle sobre o tamanho e a compacidade dos superpixels.
-
 \end{itemize}
+
+Neste trabalho os experimentos serão feitos a partir do gerador de superpixels conhecido como IFT-SLIC  \citet{ift_slic:sp_iftslic} e não o SLIC propriamente dito. O IFT-SLIC é um método mais novo que possui melhores resultados que o SLIC.
+
+
 \pagebreak
 \section{IFT - Image Foresting Transform}
 \paragraph*{}
 A Transformada Imagem-Floresta (IFT - Image Foresting Transform)  reduz problemas de processamento de imagem baseados em conexidade ao cálculo de uma floresta de caminhos ótimos no grafo derivado da imagem, seguido de um pós-processamento simples de atributos da floresta resultante, como visto em  \citet{ift:ift_teoria}.
 \paragraph*{}
  O Algoritmo da IFT pode ser usado para separar objetos do fundo em uma imagem. Nesse caso a IFT realiza uma busca através dos elementos da imagem, a partir de sementes iniciais que podem ser de objeto ou de fundo, por vizinhos similares. No decorrer da busca, elementos são conquistados virando objeto ou fundo e formando o conjunto final, que se trata de uma imagem binária.
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=12cm]{figuras/iftFlorestas}
+\caption{\label{fig:iftFlorestas} Processo de conquista de regiões por sementes de objeto, r1 e r2, e sementes de fundo, r3 e r4 }
+\end{center}
+\end{figure}
+
+Na figura (\ref{fig:iftFlorestas}) encontra-se uma mariposa e o comportamento de algumas sementes de fundo ou objeto. As sementes de objeto \textbf{r1} e \textbf{r2}, que se encontram dentro da mariposa, se deslocam conquistando o objeto e suas bordas. Na imagem essa conquista é indicada por uma curva de cor amarela. Enquanto isso as sementes \textbf{r3} e \textbf{r4} deslocam-se conquistando o fundo da imagem (cor roxa).
+
+\subsection{Definição}
+A abordagem utilizada para a IFT nesse trabalho é baseada em um grafo criado para a imagem. Como visto  em \citet{ift:ift_teoria}, temos que uma imagem \textbf{I} pode ser vista como uma tupla  $(\mathcal{I}, I)$  consistindo de um conjunto finito $\mathcal{I}$ composto por pixels (pontos no $\mathbb{Z}^{2}$)  e uma função $I$ que mapeia cada pixel $t$ em $\mathcal{I}$ algum valor $I(t)$ em algum espaço arbitrário.
+\paragraph*{}
+No caso da IFT a nível de pixels, a IFT percorre a imagem através de pixels adjacentes do grafo gerado para a imagem, e no caso deste trabalho serão todos os pixels que são adjacentes ao pixel escolhido. No caso da imagem segmentada em superpixels serão criados arcos entre superpixels vizinhos.
+
+\subsubsection{Caminhos no grafo da imagem}
+Dado um grafo da imagem, temos que um caminho simples $\pi_t$ nesse grafo é uma sequência de pixels ou regiões, dependendo do tipo de segmentação da imagem. Todos os caminhos considerados nesse trabalho são caminhos simples, isto é, caminhos que passam por cada vértice no máximo uma vez. Assim, usamos a notação $\pi_t=\langle t \rangle$ para indicar um caminho composto por um único vértice, e $\pi_t=\langle s,t \rangle$ para indicar a extensão de um caminho $\pi_s$, com término em s, por uma aresta $(s,t)$ presente no grafo da imagem.
+
+\subsubsection{Custos nos caminhos}
+
+Será assumida uma função $f$ que associa a cada caminho $\pi$ um custo $f(\pi)$, em algum conjunto totalmente ordenado de valores de custo. É comum que o custo do caminho esteja diretamente ligado a propriedades da imagem, tais como cor, gradiente, e posição do pixel ou região ao longo do caminho.
+
+A função de custo utilizada nesse trabalho para a IFT\_SLIC \citet{ift_slic:sp_iftslic} é a $f_{max}$, definida por:
+
+\begin{eqnarray*}
+f_{max}(\langle t \rangle)&= &h(t),\\
+f_{max}(\pi .  \langle s,t \rangle) &= &max(f_{max}\{\pi), w(s,t)\}
+\end{eqnarray*}
+
+Onde $h(t)$ e $w(s,t)$ são as funções de custo inicial(handicap) e a função de peso dos arcos, respectivamente.
+
+Usualmente o valor de custo inicial $h(t)$ é dado por 0,  se o $t$ é uma semente e $+\infty$ caso contrário, sendo $t$ um pixel ou superpixel, dependendo do tipo de segmentação da imagem.
+
+\subsubsection{Caminho ótimo}
+
+Seja $\prod$ o conjunto de todos os caminhos possíveis no grafo de uma imagem $G=(\mathcal{I},I)$ com destino $t$. Um caminho $\pi_t$ é ótimo se $f(\pi_t) \leq f(\pi_t')$ para qualquer outro caminho $\pi_t' \in \prod$.
+A transformada imagem-floresta para um grafo $G=(\mathcal{I},I)$, e para a função de custo $f_{max}$, associa um caminho ótimo $\pi_t$ para cada pixel ou superpixel $t \in \mathcal{I}$. No entanto, $f$ deve ser suave, caso contrário os caminhos gerados podem não serem ótimos \citet{ift:ift_teoria}.
+
 
 
 

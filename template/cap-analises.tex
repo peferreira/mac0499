@@ -20,7 +20,7 @@ Para rodar os experimentos foram utilizadas implementações do SLIC, da IFT e um 
 a produção de sementes com erosão. As bibliotecas externas utilizadas foram escritas em C++ e C.
 \begin{itemize}
 
-\item ift\_sp.cpp: implementação da \textbf{IFT} com o \textbf{SLIC} como gerador dos superpixels.
+\item ift\_sp.cpp: implementação da \textbf{IFT} com o \textbf{IFT\_SLIC} da gft como gerador dos superpixels. 
 \item ift.cpp: implementação da \textbf{IFT} sobre pixels.
 \item eroeval.cpp: realiza chamada para \textbf{ift\_sp} e \textbf{ift} para varios raios de erosão da imagem.
 
@@ -31,11 +31,12 @@ a produção de sementes com erosão. As bibliotecas externas utilizadas foram escr
 \section{Resultados obtidos}
 
 Sobre o processo de geração de sementes via erosão,  o raio de erosão é maior para a parte do fundo (dobro do valor usado do raio interno), a fim de evitar a geração de sementes de objeto e fundo equidistantes da borda ideal do gabarito. Nos gráficos o eixo x mostra o valor da erosão do objeto, e a erosão do fundo é sempre o dobro desse valor.
+As curvas abaixo são as curvas médias encontradas para o banco de dados do grabcut contendo 50 imagens, a partir de cada uma das execuções da IFT. Para as curvas médias foram considerados somente os valores absolutos de raio de erosão com frequência maior do que 20 imagens. 
 
 \begin{figure}[!htb]
 \begin{center}
 \includegraphics[width=12cm]{figuras/resultados.png}
-\caption{\label{fig:resultados} resultados}
+\caption{\label{fig:resultados} Acurácia é o valor do Coeficiente de Dice, e as curvas apresentadas são as curvas médias de todas as imagens do grabcut}
 \end{center}
 \end{figure}
 
