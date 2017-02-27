@@ -41,18 +41,18 @@ A Transformada Imagem-Floresta (IFT - Image Foresting Transform)  reduz problema
 Na figura (\ref{fig:iftFlorestas}) encontra-se uma mariposa e o comportamento de algumas sementes de fundo ou objeto. As sementes de objeto \textbf{r1} e \textbf{r2}, que se encontram dentro da mariposa, se deslocam conquistando o objeto e suas bordas. Na imagem essa conquista é indicada por uma curva de cor amarela. Enquanto isso as sementes \textbf{r3} e \textbf{r4} deslocam-se conquistando o fundo da imagem (cor roxa).
 
 \subsection{Definição}
-A abordagem utilizada para a IFT nesse trabalho é baseada em um grafo criado para a imagem. Como visto  em \citet{ift:ift_teoria}, temos que uma imagem \textbf{I} pode ser vista como uma tupla  $(\mathcal{I}, I)$  consistindo de um conjunto finito $\mathcal{I}$ composto por pixels (pontos no $\mathbb{Z}^{2}$)  e uma função $I$ que mapeia cada pixel $t$ em $\mathcal{I}$ algum valor $I(t)$ em algum espaço arbitrário.
+A abordagem utilizada para a IFT nesse trabalho é baseada em um grafo criado para a imagem. Como visto  em \citet{ift:ift_teoria}, temos que uma imagem \textbf{I} pode ser vista como uma tupla  $(\mathcal{I}, I)$  consistindo de um conjunto finito $\mathcal{I}$ composto por pixels (pontos no $\mathbb{Z}^{2}$)  e uma função $I$ que mapeia cada pixel $t$ em $\mathcal{I}$ em algum valor $I(t)$ em algum espaço arbitrário.
 \paragraph*{}
-No caso da IFT a nível de pixels, a IFT percorre a imagem através de pixels adjacentes do grafo gerado para a imagem, e no caso deste trabalho serão todos os pixels que são adjacentes ao pixel escolhido. No caso da imagem segmentada em superpixels serão criados arcos entre superpixels vizinhos.
+No caso da IFT a nível de pixels, a partir de um pixel $t$ a IFT se desloca através de $t$ para seus pixels adjacentes do grafo gerado para a imagem. No caso da imagem segmentada em superpixels, sendo $s$ um superpixel serão criados arcos entre superpixels pré-estabelecidos como vizinhos de $s$.
 
 \subsubsection{Caminhos no grafo da imagem}
 Dado um grafo da imagem, temos que um caminho simples $\pi_t$ nesse grafo é uma sequência de pixels ou regiões, dependendo do tipo de segmentação da imagem. Todos os caminhos considerados nesse trabalho são caminhos simples, isto é, caminhos que passam por cada vértice no máximo uma vez. Assim, usamos a notação $\pi_t=\langle t \rangle$ para indicar um caminho composto por um único vértice, e $\pi_t=\langle s,t \rangle$ para indicar a extensão de um caminho $\pi_s$, com término em s, por uma aresta $(s,t)$ presente no grafo da imagem.
 
 \subsubsection{Custos nos caminhos}
 
-Será assumida uma função $f$ que associa a cada caminho $\pi$ um custo $f(\pi)$, em algum conjunto totalmente ordenado de valores de custo. É comum que o custo do caminho esteja diretamente ligado a propriedades da imagem, tais como cor, gradiente, e posição do pixel ou região ao longo do caminho.
+Será assumida uma função $f$ que associa a cada caminho $\pi$ um custo $f(\pi)$, em algum conjunto totalmente ordenado de valores de custo. É comum que o custo do caminho esteja diretamente ligado a propriedades da imagem, tais como cor, gradiente, e posição do pixel ou superpixel ao longo do caminho.
 
-A função de custo utilizada nesse trabalho para a IFT\_SLIC \citet{ift_slic:sp_iftslic} é a $f_{max}$, definida por:
+A função de custo utilizada nesse trabalho é a $f_{max}$, definida por:
 
 \begin{eqnarray*}
 f_{max}(\langle t \rangle)&= &h(t),\\
