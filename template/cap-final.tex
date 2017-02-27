@@ -7,10 +7,14 @@ Então, no \textbf{Capítulo 4}, foram realizados experimentos que visavam compara
 \paragraph*{}
 A idéia de realizar um pré-processamento da imagém parece bem interessante, pois por mais que esse pré-processamento custe tempo e computação, uma vez feito, essa imagem segmentada pode ser guardada e utilizada posteriormente por outros algoritmos que possam se aproveitar dessa estrutura de superpixels. No entanto, ao diminuir o número de pixels perdemos a informação individual de cada pixel.
 \paragraph*{}
-Embora a segmentação em superpixels faça com que a imagem perca informação, os resultados mostram que a informação extraída da região quando é pré-computada pelo algoritmo do SLIC é valiosa, gerando resultados melhores do que a IFT sobre pixels quando a semente fornecida para separação do objeto é menos significativa.
+Embora a segmentação em superpixels faça com que a imagem perca informação, os resultados mostram que a informação extraída da região quando é pré-computada pelo algoritmo do IFT\_SLIC é valiosa, gerando resultados melhores do que a IFT sobre pixels quando a semente fornecida para separação do objeto é menos significativa.
+
 \paragraph*{}
-Como o SLIC é considerado uma das ténicas mais atuais e os experimentos feitos em  \citet{falcao01:ift_sp} para IFT-watershed já mostravam resultados positivos para superpixels, era esperado que os resultados encontrados para IFT-slic nesse trabalho fossem satisfatórios. Por isso os resultados obtidos estão dentro das expectativas imaginadas.
+Nota-se também nos experimentos realizados, a partir de ambas as técnicas de geração de sementes, que conforme o tamanho do superpixel aumentava, diminuindo assim o número de regiões na imagem segmentada, os resultados obtidos pioravam, mostrando que o uso de superpixels acarreta em uma troca: perda da acurácia nos resultados por ganho de eficiência, dado que a aplicação do algoritmo de segmentação promove uma redução significativa do número de elementos a serem análisados pela IFT. 
 \paragraph*{}
-A princípio esse trabalho tinha a proposta de utilizar, adicionalmente à técnica de erosão para criação de sementes da IFT, a geração de sementes através de um usuário robô, assim como feito em  \citet{falcao01:ift_sp} , para os experimentos. No entanto, algumas dificuldades na implementação fizeram com que somente a geração de sementes por erosão fosse implementada neste momento.  
+
+Quando a segmentação dos superpixels foi feita em dimensões de 10x10 os resultados foram superiores, em média, para todas as execuções. Para boa parte dos casos a diferença de acurácia foi consideravelmente maior, o que nos permite concluir que o uso do método de superpixels IFT\_SLIC visto em \citet{ift_slic:sp_iftslic}, pode melhorar a segmentação em imagens pela IFT.
+\paragraph*{}
+Como o IFT\_SLIC é considerado uma das ténicas mais atuais e até superior ao SLIC em vários casos, e os experimentos feitos em  \citet{falcao01:ift_sp} para IFT-watershed já mostravam resultados positivos para superpixels, era esperado que os resultados encontrados para IFT\_SLIC nesse trabalho fossem satisfatórios. Por isso os resultados obtidos estão dentro das expectativas.
 
 

@@ -4,14 +4,102 @@
 \section{Resumo dos experimentos}
 
 
-Os experimentos consistiram em medir a acurácia da IFT ao separar objeto e fundo de uma imagem e foram rodados para o banco de imagens públicas do grabcut que contém 50 imagens.
-Foram feitas duas classes de rotinas principais:
+Os experimentos consistiram em medir a acurácia da IFT ao separar objeto e fundo de uma imagem.
+Para medir o grau de acurácia da IFT foram realizadas diversas execuções do algoritmo a partir de sementes diferentes. Foram geradas sementes mais significativas e menos significativas com a finalidade de verificar se imagens segmentadas em superpixels geradas pelo IFT\_SLIC obteriam desempenho melhor que as mesmas imagens a nível de pixels.
+\paragraph*{}
+Para obter um melhor resultado e variabilidade executamos os experimento sobre várias imagens, e calculamos o valor médio obtido para cada um dos experimentos abaixo:
+ 
 
-
-\begin{itemize}
+\begin{enumerate}
 \item IFT sobre uma imagem bruta, sem pré-processamento em regioes (nível de pixels).
-\item IFT sobre regioes geradas pelo método SLIC, com  superpixels com aproximadamente 100, 400, 900 e 1600 pixels.
+\item IFT sobre regioes geradas pelo método IFT\_SLIC, com  superpixels com aproximadamente 100, 400, 900 e 1600 pixels.
+\end{enumerate}
+
+
+Os experimentos \textbf{1} e \textbf{2}  foram realizados para cada uma das duas técnicas de geração de sementes:
+\begin{itemize}
+\item Variação do raio de erosão sobre as imagens do gabarito.
+\item Iterações de um suário robô.
 \end{itemize}
+
+O conjunto de imagens utilizado foi o banco de imagens públicas do grabcut que contém 50 imagens. 
+
+
+
+
+
+\section{Resultados gerados pela erosão do gabarito}
+
+
+Sobre o processo de geração de sementes via erosão,  o raio de erosão é maior para a parte do fundo (dobro do valor usado do raio interno), a fim de evitar a geração de sementes de objeto e fundo equidistantes da borda ideal do gabarito. Nos gráficos o eixo x mostra o valor da erosão do objeto, e a erosão do fundo é sempre o dobro desse valor.
+As curvas abaixo são as curvas médias encontradas para o banco de dados do grabcut contendo 50 imagens, a partir de cada uma das execuções da IFT. Para as curvas médias foram considerados somente os valores absolutos de raio de erosão com frequência maior do que 20 imagens. 
+
+\begin{figure}[!htb]
+\begin{center}
+\includegraphics[width=12cm]{figuras/resultados.png}
+\caption{\label{fig:resultados} Acurácia é o valor do Coeficiente de Dice, e as curvas apresentadas são as curvas médias de todas as imagens do grabcut, a partir de sementes geradas por erosão.}
+\end{center}
+\end{figure}
+
+
+
+\subsection{IFT sobre pixels}
+Foi criado uma rotina para rodar o executável do \textbf{eroeval} para todas as imagens do grabcut, inicialmente passando como parâmetro a opção da IFT a nível de pixels. 
+Representado na imagem dos resultados pela curva roxa traçejada, a IFT a nível de pixels obteve bons resultados quando as sementes eram mais significativas, raios de erosão menores do que 10 pixels, sendo a curva com maior acurácia entre as curvas geradas, no intervalo de raio 0 até 5. No entanto, ela piora sua acurácia ao longo do crescimento do raio da erosão.
+
+\subsection{IFT sobre superpixels }
+
+E em seguida foi executada a mesma rotina, mas passando a opção da IFT sobre superpixels, e a área aproximada dos superpixels a serem gerados pelo SLIC como parâmetros. Um superpixel de área 100, por exemplo, indica que cada superpixel será composto por uma região de aproximadamente 10x10 pixels.
+\subsubsection{superpixels 10x10} A curva obteve um dos melhores comportamentos, e no início, quando todas as outras curvas de superpixels ficaram mais afastadas da curva da IFT sobre pixels, a curva verde se manteve bem próxima a curva da IFT sobre pixels. No final, assim como todas as curvas de superpixels, esta se manteve estável e bem melhor do que a curva tradicional, sobre pixels.
+\subsubsection{superpixels 20x20} Um pouco pior no início, quando comparado a IFT sobre a imagem de superpixels 10x10, no entanto, logo o comportamento da curva se mantém bem parecido com a curva anterior.
+\subsubsection{superpixels 30x30 e 40x40} Ambas obtiveram desempenho similar, e mostram que quanto maior o tamanho de um superpixel, de acordo com esse experimento, pior foi a acurácia para raios pequenos de erosão ( caso onde as sementes fornecem muita informação do objeto e do fundo).
+
+
+\subsection{análise dos resultados}
+
+Comparando a IFT através do pré-processamento de uma imagem em superpixels através do SLIC com a IFT sobre pixels,  para separar um objeto do fundo de uma imagem, os resultados mostraram que o método baseado em superpixels fornece uma estabilidade maior conforme ocorre aumento do raio da erosão.
+\paragraph*{}
+Esse resultado é semelhante ao resultado encontrado em \citet{falcao01:ift_sp} onde o autor também utiliza a IFT, mas nesse caso os superpixels são gerados por watershed como apresentado em \citet{lotufo:ift_watershed}. De acordo com os experimentos realizados nesse trabalho, o IFT\_SLIC também obteve desempenho superior e confirmou-se uma técnica eficiente nesse caso de uso.
+\paragraph*{}
+Lembrando-se que nesse trabalho não foi feita uma comparação direta com os resultados obtidos em \citet{falcao01:ift_sp}. A ideia principal foi verificar o desempenho do IFT\_SLIC como gerador de superpixels para a IFT, comparado a IFT em nível de pixels.
+
+
+
+\section{Resultados gerados por um usuário robô}
+
+Os próximos experimentos foram realizados a partir de sementes geradas por iterações de um usuário robô, portanto, é mais parecido com o experimento realizado em \citet{falcao01:ift_sp}. No entanto, neste trabalho  a geração de superpixels para a IFT foi através do método IFT\_SLIC \citet{ift_slic:sp_iftslic}. Nos experimentos feitos nesse trabalho foram realizadas 20 iterações do usuário robô para cada uma das imagens do grabcut, e calculada a média dos valores de acurácia obtidos pelo Coeficiente de Dice para cada uma das iterações do usuário robô.
+
+
+\begin{figure}[!htb]
+\begin{center}
+\includegraphics[width=17cm]{figuras/resultadosRobo.png}
+\caption{\label{fig:resultados} As curvas apresentadas são as curvas médias de todas as imagens do grabcut a partir de sementes geradas por um usuário robô. O eixo Y apresenta os valores do Coeficiente de Dice, e eixo X apresenta o número de passos do algoritmo}
+\end{center}
+\end{figure}
+
+
+
+\subsection{IFT sobre pixels}
+A curva da IFT inicialmente está bem distante das outras. Com a sequência de iterações do robô, entre 10 e 15 iterações a IFT sobre pixels conseguiu alcançar as curvas onde o tamanho dos superpixels são maiores, ou seja, temos menos superpixels por imagem. É importante notar que quando o as dimensões dos superpixels são pequenas a IFT a nível de pixel não consegue superar o desempenho da IFT utilizando a segmentação em superpixels.
+
+
+\subsection{IFT sobre superpixels }
+
+De forma geral, nas primeiras iterações a IFT sobre superpixels obteve um resultado bem superior nas primeiras iterações do usuário robô, sendo ultrapassada pela IFT somente a partir da oitava iteração do robô , no pior resultado entre os casos simulados com superpixels de dimensões 40x40 pixels.
+
+\subsubsection{superpixels 10x10} 
+O melhor dos desempenhos, a curva de cor verde, inicia com desempenho similar as outras curvas de superpixels mas quando as outras param de crescer essa é a única curva de superpixels que consegue desempenho similar a IFT sobre pixels, mesmo após as 20 iterações. 
+\subsubsection{superpixels 20x20, 30x30 e 40x40}
+Quanto menor a dimensão dos superpixels,  com o passar das iterações, a curva obteve melhores resultados. Portanto, a curva 20x20 foi a melhor dentre as três curvas analisadas aqui, seguida da curva 30x30 e por último a curva 40x40. No entanto, as três curvas obtiveram desempenhos parecidos, e foram superadas pela IFT sobre pixels (curva roxa) ao longo das iterações. 
+
+
+
+\subsection{análise dos resultados}
+Os experimentos através do usuário robô mostram que para sementes pouco significativas a segmentação em superpixels feita pelo IFT\_SLIC retorna um ganho considerável de acurácia na aplicação da IFT para a separação de objeto e fundo em uma imagem. Quando as sementes passam a ser mais significativas ( 15 iterações do usuário robô) a IFT sobre pixels passa a ter um bom resultado, mas é aumentado o número de superpixels na segmentação da imagem (curva verde, superpixels com dimensões 10x10) é possível superar a curva da IFT sobre pixels em todas as iterações do robô.
+
+
+
+
 
 
 
@@ -23,47 +111,9 @@ a produção de sementes com erosão. As bibliotecas externas utilizadas foram escr
 \item ift\_sp.cpp: implementação da \textbf{IFT} com o \textbf{IFT\_SLIC} da gft como gerador dos superpixels. 
 \item ift.cpp: implementação da \textbf{IFT} sobre pixels.
 \item eroeval.cpp: realiza chamada para \textbf{ift\_sp} e \textbf{ift} para varios raios de erosão da imagem.
-
+\item robotuser.cpp: implementação do usuário robô.
 \item Também foi utilizada a biblioteca externa \textbf{gft}, onde encontram-se implementações de  leitura , escrita e erosão de imagem.
 \end{itemize}
 \pagebreak
-
-\section{Resultados obtidos}
-
-Sobre o processo de geração de sementes via erosão,  o raio de erosão é maior para a parte do fundo (dobro do valor usado do raio interno), a fim de evitar a geração de sementes de objeto e fundo equidistantes da borda ideal do gabarito. Nos gráficos o eixo x mostra o valor da erosão do objeto, e a erosão do fundo é sempre o dobro desse valor.
-As curvas abaixo são as curvas médias encontradas para o banco de dados do grabcut contendo 50 imagens, a partir de cada uma das execuções da IFT. Para as curvas médias foram considerados somente os valores absolutos de raio de erosão com frequência maior do que 20 imagens. 
-
-\begin{figure}[!htb]
-\begin{center}
-\includegraphics[width=12cm]{figuras/resultados.png}
-\caption{\label{fig:resultados} Acurácia é o valor do Coeficiente de Dice, e as curvas apresentadas são as curvas médias de todas as imagens do grabcut}
-\end{center}
-\end{figure}
-
-
-
-\subsection{IFT sobre pixels}
-Foi criado uma rotina para rodar o executável do \textbf{eroeval} para todas as imagens do grabcut, inicialmente passando como parâmetro a opção da IFT a nível de pixels. 
-Representado na imagem dos resultados pela curva roxa traçejada, a IFT a nível de pixels obteve bons resultados quando as sementes eram mais significativas, raios de erosão menores do que 10 pixels, sendo a curva com maior acurácia entre as curvas geradas, no intervalo de raio 0 até 5. No entanto, ela piora sua acurácia ao longo da diminuição do raio da erosão.
-
-\subsection{IFT sobre superpixels }
-
-E em seguida foi executada a mesma rotina, mas passando a opção da IFT sobre superpixels, e a área aproximada dos superpixels a serem gerados pelo SLIC como parâmetros. Um superpixel de área 100, por exemplo, indica que cada superpixel será composto por uma região de aproximadamente 10x10 pixels.
-\subsubsection{superpixels 10x10} A curva obteve um dos melhores comportamentos, e no início, quando todas as outras curvas de superpixels ficaram mais afastadas da curva da IFT sobre pixels, a curva verde se manteve bem próxima a curva da IFT sobre pixels. No final, assim como todas as curvas de superpixels, esta se manteve estável e bem melhor do que a curva tradicional, sobre pixels.
-\subsubsection{superpixels 20x20} Um pouco pior no início, quando comparado a IFT sobre a imagem de superpixels 10x10, no entanto, logo o comportamento da curva se mantém bem parecido com a curva anterior.
-\subsubsection{superpixels 30x30 e 40x40} Ambas obtiveram desempenho similar, e mostram que quanto maior o tamanho de um superpixel, de acordo com esse experimento, pior foi a acurácia para raios pequenos de erosão ( caso onde as sementes fornecem muita informação do objeto e do fundo).
-
-
-
-
-
-
-\section{Análise final dos resultados}
-
-Comparando a IFT através do pré-processamento de uma imagem em superpixels através do SLIC com a IFT sobre pixels,  para separar um objeto do fundo de uma imagem, os resultados mostraram que o método baseado em superpixels fornece uma estabilidade maior conforme ocorre aumento do raio da erosão.
-\paragraph*{}
-Esse resultado é semelhante ao resultado encontrado em \citet{falcao01:ift_sp} onde o autor também utiliza a IFT, mas nesse caso os superpixels são gerados por watershed como apresentado em \citet{lotufo:ift_watershed}. De acordo com os experimentos realizados nesse trabalho, o SLIC também obteve desempenho superior e confirmou-se uma técnica eficiente nesse caso de uso.
-\paragraph*{}
-Lembrando-se que nesse trabalho não foi feita uma comparação direta com os resultados obtidos em \citet{falcao01:ift_sp}. A ideia principal foi verificar o desempenho do SLIC como gerador de superpixels para a IFT, comparado a IFT em nível de pixels.
  
 
