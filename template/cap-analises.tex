@@ -18,7 +18,7 @@ Para obter um melhor resultado e variabilidade executamos os experimento sobre v
 
 Os experimentos \textbf{1} e \textbf{2}  foram realizados para cada uma das duas técnicas de geração de sementes:
 \begin{itemize}
-\item Variação do raio de erosão sobre as imagens do gabarito.
+\item Variação do raio de erosão \ref{cont:erosao} sobre as imagens do gabarito.
 \item Iterações de um suário robô.
 \end{itemize}
 
@@ -37,7 +37,7 @@ As curvas abaixo são as curvas médias encontradas para o banco de dados do grabc
 \begin{figure}[!htb]
 \begin{center}
 \includegraphics[width=12cm]{figuras/resultados.png}
-\caption{\label{fig:resultados} Acurácia é o valor do Coeficiente de Dice, e as curvas apresentadas são as curvas médias de todas as imagens do grabcut, a partir de sementes geradas por erosão.}
+\caption{\label{fig:resultados} Acurácia é o valor do Coeficiente de Dice \ref{cont:dice}, e as curvas apresentadas são as curvas médias de todas as imagens do grabcut, a partir de sementes geradas por erosão.}
 \end{center}
 \end{figure}
 
@@ -95,7 +95,7 @@ Quanto menor a dimensão dos superpixels,  com o passar das iterações, a curva ob
 
 
 \subsection{análise dos resultados}
-Os experimentos através do usuário robô mostram que para sementes pouco significativas a segmentação em superpixels feita pelo IFT\_SLIC retorna um ganho considerável de acurácia na aplicação da IFT para a separação de objeto e fundo em uma imagem. Quando as sementes passam a ser mais significativas ( 15 iterações do usuário robô) a IFT sobre pixels passa a ter um bom resultado, mas é aumentado o número de superpixels na segmentação da imagem (curva verde, superpixels com dimensões 10x10) é possível superar a curva da IFT sobre pixels em todas as iterações do robô.
+Os experimentos através do usuário robô mostram que para sementes pouco significativas a segmentação em superpixels feita pelo IFT\_SLIC promove um ganho considerável de acurácia na aplicação da IFT para a separação de objeto e fundo em uma imagem. Quando as sementes passam a ser mais significativas ( 15 iterações do usuário robô) a IFT sobre pixels passa a ter um bom desempenho, mas comparado com a curva dos superpixels 10x10 ( de cor verde), a IFT sobre pixels é superada, na média, durante todas as iterações do robô.
 
 
 

@@ -7,6 +7,7 @@ Será tratado o conceito de erosão de uma imagem e a geração de sementes para o a
 
 
 \section{Erosão}
+\label{cont:erosao}
 \paragraph*{}
 A erosão (usualmente representada por $\ominus$) e a dilatação são consideradas as duas operações fundamentais do processamento morfológico de imagens, sendo assim, todas as outras operações são baseadas nelas. 
 \paragraph*{}
@@ -100,7 +101,7 @@ O resultado da operação de erosão, $A \ominus B$, será dado pela imagem (\ref{fi
 
 
 \section{Gerando as sementes}
-
+\label{cont:sementes}
 \subsection{Sementes na IFT}
 
 O algoritmo da IFT é inicializado a partir de sementes do fundo e do objeto. Através dessas sementes o algoritmo busca por regiões da imagem que pertençam ao mesmo objeto que a semente especificada. Por exemplo, se a IFT receber uma semente de fundo em uma iteração, ela vai percorrer os arredores daquela semente se guiando através de regiões semelhantes para clássificá-las como também sendo regiões pertencentes ao fundo da imagem.
@@ -138,6 +139,7 @@ Na imagem seguinte será apresentada uma imagem variando seu raio de erosão de 0 
 
 
 \section{Coeficiente de Dice}
+\label{cont:dice}
 Esse coeficiente também é conhecido por outros nomes, tais como: Índice de Sorensen ou Coeficiente de Sorensen-Dice. Essa medida é uma estatística usada para comparar a semelhança entre duas amostras. Também é conhecido como F1 score.
 
 A aplicação da formula original era destinada para a verificação de presença ou ausência de uma informação específica.
