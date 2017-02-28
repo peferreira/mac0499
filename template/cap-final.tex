@@ -1,7 +1,7 @@
 \chapter{Conclusões}
 \label{cap:final}
 Neste trabalho foi apresentado um problema computacional relacionado a imagens e uma análise da aplicação de uma solução existente para a segmentação de imagens, o SLIC, ao algoritmo da IFT. 
-\paragraph*{} No \textbf{Capítulo} \ref{cap:algoritmos} foi apresentada uma noção mais detalhada do SLIC e da IFT. Logo em seguida, no \textbf{Capítulo} \ref{cap:conceitos} foram introduzidos alguns conceitos para facilitar o entendimento da geração de sementes por erosão. Por fim também foi apresentado o Coeficiente de Dice \ref{cont:dice}.
+\paragraph*{} No \textbf{Capítulo} \ref{cap:algoritmos} foi apresentada uma noção mais detalhada do SLIC e da IFT. Logo em seguida, no \textbf{Capítulo} \ref{cap:conceitos} foram introduzidos conceitos para o entendimento da geração de sementes. Por fim também foi apresentado o Coeficiente de Dice \ref{cont:dice}.
 \paragraph*{}
 Então, no \textbf{Capítulo} \ref{cap:analises}, foram realizados experimentos que visavam comparar o desempenho das execuções da IFT, sobre pixels e superpixels. A segmentação em superpixels utilizada no experimento reduziu bastante o número de elementos a serem computados pela IFT, pois cada imagem foi segmentada em regiões com superpixels de tamanho aproximado de 10x10, 20x20, 30x30 e 40x40 pixels, dependendo do experimento. Fazendo com que o número de regiões examinadas na IFT\_sp fosse consideravelmente menor. No caso de superpixels 40x40, por exemplo, cada 1600 pixels da imagem se tornam um superpixel, e portanto o número de elementos é reduzido em aproximadamente 1600 vezes.    
 \paragraph*{}
