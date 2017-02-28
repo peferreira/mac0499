@@ -136,6 +136,14 @@ Na imagem seguinte será apresentada uma imagem variando seu raio de erosão de 0 
 \end{center}
 \end{figure}
 
+\subsection{Sementes por usuário robô}
+Uma forma de gerar sementes possível seria através de iterações de um usuário. Inicialmente é possível atribuir para a imagem algumas sementes de fundo e outras de objeto, rodar a IFT a partir dessas sementes e verificar a acurácia do resultado obtido. Depois, com a imagem binária obtida, seria possível que o usuário inserisse novas sementes em regiões que a IFT cometeu erros, visando informar a IFT que aquele ponto deveria ser um objeto de um tipo específico.
+\paragraph*{}
+Buscando reduzir os custos e os vieses associados com avaliação feita por um usuário real, é possível utilizar usuários robôs, que, dado o gabarito de segmentação da imagem, são capazes de simular usuários. A criação de usuários robôs sobre pixels e superpixels também foi utilizada em \citet{} para a realização dos experimentos.
+\paragraph*{}
+
+Esses usuários tentam imitar um usuário com conhecimentos avançados em segmentação. O robô tenta dar prioridade a elementos da imagem (pixels ou superpixels) que estejam próximos e possuam caraciterísticas parecidas mas que tenham sido atribuidos a tipos diferentes (objeto ou fundo) pela segmentação da imagem. A ideia geral é que superpixels adjacentes que sejam similares mas possuam valores diferentes no gabarito indicam uma grande possibilidade de erro no nosso método de segmentação. 
+
 
 
 \section{Coeficiente de Dice}
