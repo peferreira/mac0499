@@ -140,11 +140,11 @@ Na imagem seguinte será apresentada uma imagem variando seu raio de erosão de 0 
 \label{cont:robo}
 Uma forma possível de gerar sementes é através de iterações de um usuário real. Inicialmente é possível atribuir para a imagem algumas sementes de fundo e outras de objeto, rodar a IFT a partir dessas sementes e verificar a acurácia do resultado obtido. Depois, com a imagem binária obtida, seria possível que o usuário inserisse novas sementes em regiões que a IFT cometeu erros, visando forçar a IFT a tratar aquele elemento da imagem como um objeto de um tipo específico.
 \paragraph*{}
-Buscando reduzir os custos e os vieses associados com avaliação feita por um usuário real, é possível utilizar usuários robôs, que, dado o gabarito de segmentação da imagem, são capazes de simular usuários reais. A criação de usuários robôs sobre pixels e superpixels também foi utilizada em \citet{} para a realização dos experimentos.
+Buscando reduzir os custos e os vieses associados com avaliação feita por um usuário real, é possível utilizar usuários robôs, que, dado o gabarito de segmentação da imagem, são capazes de simular usuários reais. A criação de usuários robôs sobre pixels e superpixels também foi utilizada em \citet{falcao01:ift_sp} para a realização dos experimentos.
 \paragraph*{}
-Esses usuários tentam imitar um usuário com conhecimentos avançados em segmentação de imagens. A cada passo, o usuário robô seleciona um novo marcador de correção no maior componente conexo de erro, centralizado no ponto mais distante da borda do componente, gerando uma sequencia de IFTs.
+Esses usuários tentam imitar um usuário com conhecimentos avançados em segmentação de imagens. A cada passo, o usuário robô seleciona um novo marcador de correção no maior componente conexo de erro, centralizado no ponto mais distante da borda do componente, gerando uma sequência de IFTs.
 \paragraph*{}
- Um usuário robô garante um padrão nas decisões tomadas, que são baseadas em seu algoritmo, sendo assim os resultados obtidos são mais confiáveis que através do usuário real.
+ Um usuário robô garante um padrão nas decisões tomadas, que são baseadas em seu algoritmo, sendo assim os resultados obtidos são mais confiáveis que através de um usuário real.
 
 \section{Coeficiente de Dice}
 \label{cont:dice}
