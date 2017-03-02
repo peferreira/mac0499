@@ -5,7 +5,7 @@
 
 
 Os experimentos consistiram em medir a acurácia da IFT ao separar objeto e fundo de uma imagem.
-Para medir o grau de acurácia da IFT foram realizadas diversas execuções do algoritmo a partir de sementes diferentes. Foram geradas sementes mais significativas e menos significativas com a finalidade de verificar se imagens segmentadas em superpixels geradas pelo IFT\_SLIC obteriam desempenho melhor que as mesmas imagens a nível de pixels.
+Para medir o grau de acurácia da IFT foram realizadas diversas execuções do algoritmo a partir de sementes diferentes. Foram geradas sementes mais significativas e menos significativas com a finalidade de verificar se imagens segmentadas em superpixels geradas pelo IFT\_SLIC obteriam desempenho melhor que as mesmas imagens a nível de pixels. 
 \paragraph*{}
 Para obter um melhor resultado e variabilidade executamos os experimento sobre várias imagens, e calculamos o valor médio obtido para cada um dos experimentos abaixo:
  
@@ -55,7 +55,7 @@ E em seguida foi executada a mesma rotina, mas passando a opção da IFT sobre sup
 \subsubsection{superpixels 30x30 e 40x40} Ambas obtiveram desempenho similar, e mostram que quanto maior o tamanho de um superpixel, de acordo com esse experimento, pior foi a acurácia para raios pequenos de erosão ( caso onde as sementes fornecem muita informação do objeto e do fundo).
 
 
-\subsection{análise dos resultados}
+\subsection{Análise dos resultados}
 
 Comparando a IFT através do pré-processamento de uma imagem em superpixels através do SLIC com a IFT sobre pixels,  para separar um objeto do fundo de uma imagem, os resultados mostraram que o método baseado em superpixels fornece uma estabilidade maior conforme ocorre aumento do raio da erosão.
 \paragraph*{}
