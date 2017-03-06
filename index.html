@@ -46,10 +46,10 @@
           A técnica de superpixels consiste em agrupar pixels similares de uma imagem em regiões compactas e conexas. As regiões idealmente devem preservar as bordas de transição entre os diferentes objetos presentes na imagem <a href="#1">[1]</a>.  Essa técnica pode diminuir a complexidade de tarefas de visão computacional e processamento de imagens, pois no nível de superpixels temos um número de elementos da imagem significantemente menor, consequentemente elevando a eficiência.
 
       A Transformada Imagem-Floresta (Image Foresting Transform - IFT)<a href="#2">[2]</a> é um algoritmo que calcula uma floresta de caminhos ótimos em um
-      grafo derivado da imagem. A segmentação interativa de objetos via IFT é obtida através da seleção de pixels sementes dentro e fora do objeto, sendo o objeto segmentado definido pela união das árvores enraizadas em suas sementes internas. No artigo <a href="#3">[3]</a> foi proposto o uso da IFT sobre um grafo de regiões (superpixels) obtido via algoritmo de watershed <a href="#4">[4]</a>. Segundo os autores, os resultados da segmentação via IFT no nível do grafo de regiões gerou melhores resultados quando comparado a IFT em um grafo no nível dos pixels.
+      grafo derivado da imagem. A segmentação interativa de objetos via IFT é obtida através da seleção de pixels sementes dentro e fora do objeto, sendo o objeto segmentado definido pela união das árvores enraizadas em suas sementes internas. No artigo <a href="#3">[3]</a> foi proposto o uso da IFT sobre um grafo de regiões (superpixels) obtido via algoritmo de watershed <a href="#4">[4]</a>  . Segundo os autores, os resultados da segmentação via IFT no nível do grafo de regiões gerou melhores resultados quando comparado a IFT em um grafo no nível dos pixels.
       No entanto, existem algoritmos mais adequados para a geração de superpixels que o uso das bacias do watershed, tais como o SLIC <a href="#1">[1]</a>.
-      Esse trabalho visa avaliar o impacto do uso de um grafo de regiões obtido pelo método SLIC na segmentação via IFT. Pretendemos também avaliar um novo método de geração de superpixels chamado IFT-SLIC <a href="#5">[5]</a>. Os experimentos serão conduzidos usando sementes obtidas automaticamente
-      de um gabarito de segmentação (ground truth), empregando usuários robôs <a href="#6">[6]</a> e também via técnica de erosão/dilatação gerando uma região de incerteza a ser segmentada entorno da borda.
+      Esse trabalho visa avaliar o impacto do uso de um grafo de regiões obtido pelo método IFT-SLIC <a href="#5">[5]</a> (método mais novo e que possuí resultados melhores do que o SLIC) na segmentação via IFT . Os experimentos serão conduzidos usando sementes obtidas automaticamente
+      de um gabarito de segmentação (ground truth), empregando usuários robôs  e também via técnica de erosão/dilatação gerando uma região de incerteza a ser segmentada entorno da borda.
 
 	</p>
 
@@ -183,15 +183,26 @@
 
 
     <footer>
-      <section id="referencias" style="text-align:justify;  padding-left:200px; padding-top:120px">
+      <section id="referencias" style="width:700px; text-align:justify;  padding-left:200px; padding-top:120px">
       <strong>Referências:</strong><br><br>
-      <a name="1" href="SMITH_TPAMI12.pdf">[1] SLIC Superpixels Compared
-  to State-of-the-Art Superpixel Methods</a><br>
-      <a name="2" href="ift-tpami04.pdf">[2] The Image Foresting Transform:
-Theory, Algorithms, and Applications</a><br>
-      <a name="3" href="06656178.pdf">[3] Interactive Segmentation by Image Foresting
-Transform on Superpixel Graphs</a><br>
-
+      <span id="1" >[1] Achanta et al.(2012) Radhakrishna Achanta, Appu Shaji, Kevin Smith, Aurelien Lucchi,
+Pascal Fua, Fellow e Sabine Susstrunk. Slic superpixels compared to state-of-the-art
+superpixel methods. 34(11)</span><br>
+      <span id="2" >[2] Falcão et al.(2004) Alexandre X. Falcão, Jorge Stolfi e Roberto de Alencar Lotufo. The
+image foresting transform: Theory, algorithms, and applications. 26(1):19–28. </span><br>
+      <span id="3" >[3] Rauber et al.(2013) Paulo E. Rauber, Alexandre X. Falcão, Thiago V. Spina e Pedro J.
+de Rezende. Interactive segmentation by image foresting transform on superpixel graphs.
+Em XXVI Conference on Graphics, Patterns and Images, páginas 131–138.</span><br>
+      <span id ="4" > [4] Lotufo et al.(2002) Roberto Lotufo, Alexandre Falcão e Francisco Zampirolli. Ift-watershed
+from gray-scale marker. Em Computer Graphics and Image Processing. Proceedings. XV
+Brazilian Symposium, páginas 146–152.
+      <br>
+      <span id="5">
+      [5] Alexandre et al.(2015) Eduardo B. Alexandre, Ananda Chowdhury, A. X. Falcão e
+      Paulo A.V. Miranda. Ift-slic: A general framework for superpixel generation based on
+      simple linear iterative clustering and image foresting transform. Em XXVIII SIBGRAPI
+      - Conference on Graphics, Patterns and Images., páginas 337–344
+      </span><br>
 
       </section>
     </footer>
